@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class GridPositionPoint
+    public class GridPositionPoint
     {
         private int posX, posY;
 

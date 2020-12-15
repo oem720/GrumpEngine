@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class MapSpaceDefinition
+    public class MapSpaceDefinition
     {
         private ResizeableMatrix mapSpace;
 

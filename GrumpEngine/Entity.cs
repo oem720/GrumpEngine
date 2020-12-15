@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    interface Entity
+    public interface Entity
     {
         int GetEntType();
 

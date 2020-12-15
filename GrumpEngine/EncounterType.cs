@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class EncounterType
+    public class EncounterType
     {
         int outwardVisibleValue;
         List<String> descriptors;
