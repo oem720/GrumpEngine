@@ -8,29 +8,78 @@ namespace GrumpEngine
 {
     class Inventory
     {
-        private int size;
-        private Entity[] inv;
-        public Inventory()
-        {
-            size = 0;
-            inv = new Entity[0];
-        }
-        public Inventory(int input)
+        private float size;
+        private float currentSize;
+        private List<Entity> inventory = new List<Entity>();
+        /// <summary>
+        /// Overloaded constructor for creating a new inventory.
+        /// </summary>
+        /// <param name="input"></param>
+        public Inventory(int input = 0)
         {
             size = input;
-            inv = new Entity[input];
+            currentSize = input;
         }
-        public int GetSize()
+        /// <summary>
+        /// Returns the max size of the inventory.
+        /// </summary>
+        /// <returns></returns>
+        public float GetSize()
         {
             return size;
         }
-        public Entity[] GetInventory()
+        /// <summary>
+        /// Returns the current weight of inventory.
+        /// </summary>
+        /// <returns></returns>
+        public float GetCurrentSize()
         {
-            return inv;
+            return currentSize;
         }
+        /// <summary>
+        /// Returns the inventory as List<Entity>.
+        /// </summary>
+        /// <returns></returns>
+        public List<Entity> GetInventory()
+        {
+            return inventory;
+        }
+        /// <summary>
+        /// Sets the new max size of the inventory.
+        /// </summary>
+        /// <param name="input"></param>
+        public void setSize(float input)
+        {
+            size = input;
+        }
+        /// <summary>
+        /// Adds a single item to inventory if there is room available.
+        /// </summary>
+        /// <param name="e"></param>
         public void addItem(Entity e)
         {
-            e.GetWeight();
+            if (currentSize + e.GetWeight() > size)
+                inventory.Add(e);
+        }
+        /// <summary>
+        /// Removes a single item from inventory if int is not set.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="amount"></param>
+        public void removeItem(Entity e, int amount = 1)
+        {
+            int counter = 0;
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                if (counter == amount)
+                    break;
+                if (inventory.ElementAt(i) == e)
+                {
+                    counter++;
+                    currentSize -= e.GetWeight();
+                    inventory.RemoveAt(i);
+                }
+            }
         }
     }
 }
