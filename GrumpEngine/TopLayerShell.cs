@@ -41,5 +41,10 @@ namespace GrumpEngine
                 Thread.Sleep(2);
             }
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
