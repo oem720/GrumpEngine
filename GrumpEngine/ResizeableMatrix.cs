@@ -1,8 +1,8 @@
 ﻿namespace GrumpEngine
 {
-    class ResizeableMatrix
+    class ResizeableMatrix<T>
     {
-        private EncounterType[,] matrix;
+        private T[,] matrix;
 
         /// <summary>
         /// Creates a new ResizeableMatrix with the starting size of rows and columns as row and col.
@@ -11,13 +11,13 @@
         /// <param name="col"></param>
         public ResizeableMatrix(int row, int col)
         {
-            matrix = new EncounterType[row, col];
+            matrix = new T[row, col];
         }
 
         /// <summary>
         /// Returns the matrix stored within the class.
         /// </summary>
-        public EncounterType[,] Matrix
+        public T[,] Matrix
         {
             get { return matrix; }
         }
@@ -27,13 +27,13 @@
         /// Will require point specific editing to change individual values.
         /// </summary>
         /// <param name="value"></param>
-        public void Fill(int value)
+        public void Fill(T value)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    matrix[i, j] = new EncounterType(value);
+                    matrix[i, j] = value;
                 }
             }
         }
@@ -43,7 +43,7 @@
         /// If the array has no empty slots, the matrix is resized, and the value is added to the first empty slot on the new row.
         /// </summary>
         /// <param name="value"></param>
-        public void Add(EncounterType value)
+        public void Add(T value)
         {
             for(int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -69,17 +69,17 @@
         /// <param name="value"></param>
         /// <param name="row"></param>
         /// <param name="col"></param>
-        public void Insert(EncounterType value, int row, int col)
+        public void Insert(T value, int row, int col)
         {
-            EncounterType[,] temp;
+            T[,] temp;
 
             if(Count + 1 > matrix.Length)
             {
-                temp = new EncounterType[matrix.GetLength(0) + 1, matrix.GetLength(1)];
+                temp = new T[matrix.GetLength(0) + 1, matrix.GetLength(1)];
             }
             else
             {
-                temp = new EncounterType[matrix.GetLength(0), matrix.GetLength(1)];
+                temp = new T[matrix.GetLength(0), matrix.GetLength(1)];
             }
 
             for(int i = 0; i <= row; i++)
@@ -136,7 +136,7 @@
         /// <param name="value"></param>
         /// <param name="row"></param>
         /// <param name="col"></param>
-        public void Replace(EncounterType value, int row, int col)
+        public void Replace(T value, int row, int col)
         {
             matrix[row, col] = value;
         }
@@ -148,7 +148,7 @@
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(ResizeableMatrix other)
+        public int CompareTo(ResizeableMatrix<T> other)
         {
             return matrix.Length - other.Matrix.Length;
         }
@@ -158,7 +158,7 @@
         /// </summary>
         public void ResizeColSize()
         {
-            EncounterType[,] temp = new EncounterType[matrix.GetLength(0), matrix.GetLength(1) + 1];
+            T[,] temp = new T[matrix.GetLength(0), matrix.GetLength(1) + 1];
 
             for(int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -176,7 +176,7 @@
         /// </summary>
         public void ResizeRowSize()
         {
-            EncounterType[,] temp = new EncounterType[matrix.GetLength(0) + 1, matrix.GetLength(1)];
+            T[,] temp = new T[matrix.GetLength(0) + 1, matrix.GetLength(1)];
 
             for(int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -237,7 +237,7 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public EncounterType GetEncounter(int x, int y)
+        public T GetValue(int x, int y)
         {
             return matrix[x, y];
         }
