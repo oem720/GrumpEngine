@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapSpaceEditor.cs" />
     <Compile Include="TopLevelUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GrumpEngine\GrumpEngine.csproj">
+      <Project>{952f918f-1d9c-476f-8cc4-addcc0dcd929}</Project>
+      <Name>GrumpEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
