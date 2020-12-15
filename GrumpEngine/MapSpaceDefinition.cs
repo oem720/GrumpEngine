@@ -37,7 +37,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void EditPoint(GridPositionPoint point, EncounterType num)
         {
-            mapSpace.Replace(num, point.X, point.Y);
+            mapSpace.Replace(num, mapSpace.GetLength(1) - point.X, mapSpace.GetLength(0) - point.Y);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void EditPoint(int x, int y, EncounterType num)
         {
-            mapSpace.Replace(num, x, y);
+            mapSpace.Replace(num, mapSpace.GetLength(1) - x, mapSpace.GetLength(0) - y);
         }
 
         public override string ToString()

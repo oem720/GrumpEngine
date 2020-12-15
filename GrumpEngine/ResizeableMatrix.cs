@@ -221,6 +221,11 @@
             get { return matrix.Length; }
         }
 
+        public int GetLength(int dimension)
+        {
+            return matrix.GetLength(dimension);
+        }
+
         public override string ToString()
         {
             string matrixAsString = "";
