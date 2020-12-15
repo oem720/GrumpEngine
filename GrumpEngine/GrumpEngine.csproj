@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Entity.cs" />
     <Compile Include="EncounterType.cs" />
-    <Compile Include="OwenSmells.cs" />
+    <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
     <Compile Include="MapSpaceInterpreter.cs" />
     <Compile Include="GridPositionPoint.cs" />
