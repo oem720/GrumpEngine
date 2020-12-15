@@ -63,7 +63,7 @@ namespace GrumpEngine
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // TopLayerShell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,9 +73,10 @@ namespace GrumpEngine
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "TopLayerShell";
             this.Text = "Form1";
             this.Shown += new System.EventHandler(this.form1_Load);
+            this.Click += new System.EventHandler(this.OnClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 
