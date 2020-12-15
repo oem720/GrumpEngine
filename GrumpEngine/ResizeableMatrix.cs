@@ -4,16 +4,29 @@
     {
         private EncounterType[,] matrix;
 
+        /// <summary>
+        /// Creates a new ResizeableMatrix with the starting size of rows and columns as row and col.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
         public ResizeableMatrix(int row, int col)
         {
             matrix = new EncounterType[row, col];
         }
 
+        /// <summary>
+        /// Returns the matrix stored within the class.
+        /// </summary>
         public EncounterType[,] Matrix
         {
             get { return matrix; }
         }
 
+        /// <summary>
+        /// Fills the matrix with the value passed to it.
+        /// Will require point specific editing to change individual values.
+        /// </summary>
+        /// <param name="value"></param>
         public void Fill(int value)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -25,6 +38,11 @@
             }
         }
 
+        /// <summary>
+        /// Finds an empty slot on the matrix and slides the value into it.
+        /// If the array has no empty slots, the matrix is resized, and the value is added to the first empty slot on the new row.
+        /// </summary>
+        /// <param name="value"></param>
         public void Add(EncounterType value)
         {
             for(int i = 0; i < matrix.GetLength(0); i++)
@@ -44,6 +62,13 @@
             }
         }
 
+        /// <summary>
+        /// Inserts the given EncounterType at the slot given in [row, col]
+        /// Every value to the left is shifted left by 1 value to ensure all values are preserved.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
         public void Insert(EncounterType value, int row, int col)
         {
             EncounterType[,] temp;
@@ -105,16 +130,32 @@
             matrix = temp;
         }
 
+        /// <summary>
+        /// Replaces the value at space [row, col] with EncounterType value.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
         public void Replace(EncounterType value, int row, int col)
         {
             matrix[row, col] = value;
         }
 
+        /// <summary>
+        /// Compares the lengths of another Matrix to this array. Return the value from that subtraction.
+        /// If it is 0, they are the same length. If it is 1 or greater, this matrix is greater in size.
+        /// If it is -1 or less, the other matrix is greater in size.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(ResizeableMatrix other)
         {
             return matrix.Length - other.Matrix.Length;
         }
 
+        /// <summary>
+        /// Resizes the array on the column. Adds an extra column to the array and copies the old data to the new array.
+        /// </summary>
         public void ResizeColSize()
         {
             EncounterType[,] temp = new EncounterType[matrix.GetLength(0), matrix.GetLength(1) + 1];
@@ -130,6 +171,9 @@
             matrix = temp;
         }
 
+        /// <summary>
+        /// Resizes the array on the rows. Adds an extra row to the array and copies the old data to the new array.
+        /// </summary>
         public void ResizeRowSize()
         {
             EncounterType[,] temp = new EncounterType[matrix.GetLength(0) + 1, matrix.GetLength(1)];
@@ -145,6 +189,9 @@
             matrix = temp;
         }
 
+        /// <summary>
+        /// Returns the amount of elements currently stored on the array.
+        /// </summary>
         public int Count
         {
             get
@@ -166,6 +213,9 @@
             }
         }
 
+        /// <summary>
+        /// Returns the amount of slots currently available to be stored.
+        /// </summary>
         public int Length
         {
             get { return matrix.Length; }
