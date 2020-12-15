@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityTemplate.cs" />
+    <Compile Include="Entities\EntityTemplate.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EncounterType.cs" />
@@ -58,8 +58,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
