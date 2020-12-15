@@ -8,7 +8,7 @@ namespace GrumpEngine
 {
     public class MapSpaceDefinition
     {
-        private ResizeableMatrix mapSpace;
+        private ResizeableMatrix<EncounterType> mapSpace;
 
         /// <summary>
         /// Creates a new map space using the parameters of rows and cols.
@@ -17,7 +17,7 @@ namespace GrumpEngine
         /// <param name="col"></param>
         public MapSpaceDefinition(int row, int col)
         {
-            mapSpace = new ResizeableMatrix(row, col);
+            mapSpace = new ResizeableMatrix<EncounterType>(row, col);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void PopulateValues(int num)
         {
-            mapSpace.Fill(num);
+            mapSpace.Fill(new EncounterType(num));
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public EncounterType GetTileValue(GridPositionPoint pos)
         {
-            return mapSpace.GetEncounter(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
+            return mapSpace.GetValue(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public EncounterType GetTileValue(int x, int y)
         {
-            return mapSpace.GetEncounter(x, y);
+            return mapSpace.GetValue(x, y);
         }
 
         /// <summary>

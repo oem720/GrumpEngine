@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EncounterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EncounterEditor.Designer.cs">
+      <DependentUpon>EncounterEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grid.cs" />
     <Compile Include="MapSpaceEditor.cs" />
     <Compile Include="TopLevelUI.cs">
