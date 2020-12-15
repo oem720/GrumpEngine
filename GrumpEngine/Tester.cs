@@ -18,8 +18,7 @@ namespace GrumpEngine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            TopLayerShell form = new TopLayerShell();
-            Application.Run(form);
+            Application.Run(new TopLayerShell());
         }
     }
 }
