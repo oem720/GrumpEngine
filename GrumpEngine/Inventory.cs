@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class OwenSmells
+    class Inventory
     {
     }
 }
