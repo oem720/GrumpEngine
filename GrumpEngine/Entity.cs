@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    abstract class Entity
+    interface Entity
     {
-        public abstract int GetEntType();
+        int GetEntType();
 
-        public abstract float GetWeight();
+        float GetWeight();
 
-        public abstract bool IsMultiSpaceFlag();
     }
 }
