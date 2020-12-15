@@ -35,11 +35,20 @@ namespace GrumpEngine
 
         private void TypeTextToWindow(string text)
         {
+            SetTextBox(Environment.NewLine);
             foreach (char c in text)
             {
                 SetTextBox(c.ToString());
-                Thread.Sleep(2);
+                Thread.Sleep(5);
             }
+            SetTextBox(Environment.NewLine);
+        }
+
+        private void OnClick(object sender, EventArgs e)
+        {
+            string text = "you clicked me!";
+
+            TypeTextToWindow(text);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
