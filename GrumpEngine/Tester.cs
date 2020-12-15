@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace GrumpEngine
 {
@@ -15,7 +15,7 @@ namespace GrumpEngine
             foreach (char c in text)
             {
                 Console.Write(c);
-                System.Threading.Thread.Sleep(50);
+                Thread.Sleep(2);
             }
             ResizeableMatrix rm = new ResizeableMatrix(6, 3);
 
