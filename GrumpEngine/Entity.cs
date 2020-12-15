@@ -6,20 +6,10 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class Entity
+    abstract class Entity
     {
-        int typeSetter;
-        string[] args;
+        public abstract int GetEntType();
 
-        public Entity(int type)
-        {
-            typeSetter = type;
-        }
-
-        public Entity(int type, string[] specialArgs)
-        {
-            typeSetter = type;
-            args = specialArgs;
-        }
+        public abstract int GetWeight();
     }
 }
