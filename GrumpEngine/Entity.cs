@@ -10,6 +10,8 @@ namespace GrumpEngine
     {
         public abstract int GetEntType();
 
-        public abstract int GetWeight();
+        public abstract float GetWeight();
+
+        public abstract bool IsMultiSpaceFlag();
     }
 }
