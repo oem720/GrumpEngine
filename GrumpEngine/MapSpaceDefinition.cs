@@ -57,13 +57,34 @@ namespace GrumpEngine
         }
 
         /// <summary>
-        /// Returns the value at the point passed to it.
+        /// Returns the value at the point passed to it using cartesian.
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         public EncounterType GetTileValue(GridPositionPoint pos)
         {
             return mapSpace.GetEncounter(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
+        }
+
+        /// <summary>
+        /// Gets the tile at the specified x and y values, using matrix coords rather than cartesian
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public EncounterType GetTileValue(int x, int y)
+        {
+            return mapSpace.GetEncounter(x, y);
+        }
+
+        /// <summary>
+        /// returns the length of the specified dimension.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        public int GetLength(int dimension)
+        {
+            return mapSpace.GetLength(dimension);
         }
 
         /// <summary>

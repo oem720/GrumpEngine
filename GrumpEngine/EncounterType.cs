@@ -50,6 +50,16 @@ namespace GrumpEngine
             return entityReg.ElementAt(index);
         }
 
+        public List<string> Descriptors
+        {
+            get { return descriptors; }
+        }
+
+        public List<Entity> EntityRegistry
+        {
+            get { return entityReg; }
+        }
+
         public override string ToString()
         {
             return "" + outwardVisibleValue;

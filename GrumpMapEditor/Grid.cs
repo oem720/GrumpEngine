@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrumpEngine
+namespace GrumpMapEditor
 {
-    public interface Entity
+    class Grid
     {
-        int GetEntType();
 
-        float GetWeight();
-
-
-        string GetIdentifier();
     }
 }
