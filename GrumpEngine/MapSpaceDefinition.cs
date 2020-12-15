@@ -41,15 +41,49 @@ namespace GrumpEngine
         }
 
         /// <summary>
-        /// Edits a specific point on the map at the coordinates given in x and y.
-        /// Sets the value at that point to the EncounterType passed to the method.
+        /// Adds a column to the current map space.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="num"></param>
-        public void EditPoint(int x, int y, EncounterType num)
+        public void AddColumn()
         {
-            mapSpace.Replace(num, mapSpace.GetLength(0) - (1 + y), x);
+            mapSpace.ResizeColSize();
+        }
+
+        /// <summary>
+        /// Adds a row to the current map space.
+        /// </summary>
+        public void AddRow()
+        {
+            mapSpace.ResizeRowSize();
+        }
+
+        /// <summary>
+        /// Returns the value at the point passed to it.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public EncounterType GetTileValues(GridPositionPoint pos)
+        {
+            return mapSpace.GetEncounter(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
+        }
+
+        /// <summary>
+        /// Edits the encounter tile at the given position allowing you to add either a new descriptor or a new Entity
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="newDescriptor"></param>
+        /// <param name="newEnt"></param>
+        public void EditEncounterTile(GridPositionPoint pos, string newDescriptor = null, Entity newEnt = null)
+        {
+            EncounterType editedPoint = GetTileValues(pos);
+
+            if(newDescriptor != null)
+            {
+                editedPoint.AddDescriptorString(newDescriptor);                
+            }
+            if(newEnt != null)
+            {
+                editedPoint.AddEntity(newEnt);
+            }
         }
 
         public override string ToString()

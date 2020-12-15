@@ -221,9 +221,25 @@
             get { return matrix.Length; }
         }
 
+        /// <summary>
+        /// Returns the length at the dimension. 0 returns the number of rows, 1 returns the number of columns.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
         public int GetLength(int dimension)
         {
             return matrix.GetLength(dimension);
+        }
+
+        /// <summary>
+        /// Returns the encounter tile at the specified coordinates.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public EncounterType GetEncounter(int x, int y)
+        {
+            return matrix[x, y];
         }
 
         public override string ToString()
