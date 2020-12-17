@@ -21,7 +21,12 @@ namespace GrumpMapEditor
 
         private void TopLevelUI_Load(object sender, EventArgs e)
         {            
-            edit.WriteToSystem();
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
