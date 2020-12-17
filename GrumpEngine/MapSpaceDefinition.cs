@@ -43,17 +43,35 @@ namespace GrumpEngine
         /// <summary>
         /// Adds a column to the current map space.
         /// </summary>
-        public void AddColumn()
+        public bool AddColumn()
         {
-            mapSpace.ResizeColSize();
+            return mapSpace.AddCol();
         }
 
         /// <summary>
         /// Adds a row to the current map space.
         /// </summary>
-        public void AddRow()
+        public bool AddRow()
         {
-            mapSpace.ResizeRowSize();
+            return mapSpace.AddRow();
+        }
+
+        /// <summary>
+        /// Removes a column from the current map space.
+        /// </summary>
+        /// <returns></returns>
+        public bool RemoveCol()
+        {
+            return mapSpace.RemoveCol();
+        }
+
+        /// <summary>
+        /// Removes a row from the current map space.
+        /// </summary>
+        /// <returns></returns>
+        public bool RemoveRow()
+        {
+            return mapSpace.RemoveRow();
         }
 
         /// <summary>

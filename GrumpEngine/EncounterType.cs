@@ -50,6 +50,12 @@ namespace GrumpEngine
             return entityReg.ElementAt(index);
         }
 
+        public int OutwardValue
+        {
+            get { return outwardVisibleValue; }
+            set { outwardVisibleValue = value; }
+        }
+
         public List<string> Descriptors
         {
             get { return descriptors; }

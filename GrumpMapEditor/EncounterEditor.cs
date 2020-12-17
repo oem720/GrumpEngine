@@ -16,5 +16,10 @@ namespace GrumpMapEditor
         {
             InitializeComponent();
         }
+
+        private void Editor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,19 +10,80 @@ namespace GrumpMapEditor
 {
     class Grid
     {
-        ResizeableMatrix<Button> grid;
-        TableLayoutPanel reference;
+        ResizeableMatrix<EncounterSelectionButton> grid;
+        MapSpaceDefinition mMap;
 
-        public Grid(TableLayoutPanel reference)
-        {
-            grid = new ResizeableMatrix<Button>(5, 5);
-            this.reference = reference;
-            initButtons();
+        public Grid(MapSpaceDefinition map)        {
+            grid = new ResizeableMatrix<EncounterSelectionButton>(5, 5);
+            mMap = map;
+            InitButtons();
         }
 
-        private void initButtons()
+        public ResizeableMatrix<EncounterSelectionButton> ButtonGrid
         {
-            
+            get { return grid; }
+        }
+
+        public EncounterSelectionButton GetButton(int x, int y)
+        {
+            return grid.GetValue(x, y);
+        }
+
+        private void InitButtons()
+        {
+            for(int i = 0; i < grid.GetLength(0); i++)
+            {
+                for(int j = 0; j < grid.GetLength(1); j++)
+                {
+                    grid.Add(new EncounterSelectionButton(mMap.GetTileValue(i, j)));
+                }
+            }
+        }
+
+        private void InitNewCol()
+        {
+            for(int i = 0; i < grid.GetLength(0); i++)
+            {
+                grid.Add(new EncounterSelectionButton(mMap.GetTileValue(i, grid.GetLength(1) - 1)));
+            }
+        }
+
+        private void InitNewRow()
+        {
+            for (int i = 0; i < grid.GetLength(1); i++)
+            {
+                grid.Add(new EncounterSelectionButton(mMap.GetTileValue(grid.GetLength(0) - 1, i)));
+            }
+        }
+
+        public bool AddRow()
+        {
+            mMap.AddRow();
+            grid.AddRow();
+            InitNewRow();
+            return true;
+        }
+
+        public bool RemoveRow()
+        {
+            mMap.RemoveRow();
+            grid.RemoveRow();
+            return true;
+        }
+
+        public bool AddCol()
+        {
+            mMap.AddColumn();
+            grid.AddCol();
+            InitNewCol();
+            return true;
+        }
+
+        public bool RemoveCol()
+        {
+            mMap.RemoveCol();
+            grid.RemoveCol();
+            return true;
         }
     }
 }

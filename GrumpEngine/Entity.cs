@@ -12,7 +12,6 @@ namespace GrumpEngine
 
         float GetWeight();
 
-
         string GetIdentifier();
     }
 }

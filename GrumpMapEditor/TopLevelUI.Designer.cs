@@ -40,14 +40,20 @@ namespace GrumpMapEditor
             // 
             // mapButtonAccessGrid
             // 
-            this.mapButtonAccessGrid.ColumnCount = 2;
-            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.mapButtonAccessGrid.ColumnCount = 5;
+            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.Location = new System.Drawing.Point(12, 12);
             this.mapButtonAccessGrid.Name = "mapButtonAccessGrid";
-            this.mapButtonAccessGrid.RowCount = 2;
-            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.mapButtonAccessGrid.RowCount = 5;
+            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.Size = new System.Drawing.Size(453, 426);
             this.mapButtonAccessGrid.TabIndex = 0;
             // 
@@ -59,6 +65,7 @@ namespace GrumpMapEditor
             this.addRowButton.TabIndex = 1;
             this.addRowButton.Text = "Add Row";
             this.addRowButton.UseVisualStyleBackColor = true;
+            this.addRowButton.Click += new System.EventHandler(this.AddRowButton_OnClick);
             // 
             // removeRowButton
             // 
@@ -68,6 +75,7 @@ namespace GrumpMapEditor
             this.removeRowButton.TabIndex = 2;
             this.removeRowButton.Text = "Remove Row";
             this.removeRowButton.UseVisualStyleBackColor = true;
+            this.removeRowButton.Click += new System.EventHandler(this.RemoveRowButton_OnClick);
             // 
             // addColButton
             // 
@@ -77,6 +85,7 @@ namespace GrumpMapEditor
             this.addColButton.TabIndex = 3;
             this.addColButton.Text = "Add Column";
             this.addColButton.UseVisualStyleBackColor = true;
+            this.addColButton.Click += new System.EventHandler(this.AddColumnButton_OnClick);
             // 
             // removeColButton
             // 
@@ -86,7 +95,7 @@ namespace GrumpMapEditor
             this.removeColButton.TabIndex = 4;
             this.removeColButton.Text = "Remove Column";
             this.removeColButton.UseVisualStyleBackColor = true;
-            this.removeColButton.Click += new System.EventHandler(this.button4_Click);
+            this.removeColButton.Click += new System.EventHandler(this.RemoveColButton_OnClick);
             // 
             // exportButton
             // 

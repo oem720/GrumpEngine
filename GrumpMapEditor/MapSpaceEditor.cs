@@ -20,7 +20,11 @@ namespace GrumpMapEditor
         {
             mapInEdit = new MapSpaceDefinition(DEFAULT_ROWS, DEFAULT_COLS);
             currentPoint = new GridPositionPoint(0, 0);
-            mapInEdit.PopulateValues(0);
+        }
+
+        public MapSpaceDefinition Map
+        {
+            get { return mapInEdit; }
         }
 
         public void WriteToSystem()

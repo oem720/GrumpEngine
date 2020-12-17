@@ -57,7 +57,7 @@
                 }
                 if (i == matrix.GetLength(0) - 1)
                 {
-                    ResizeRowSize();
+                    AddRow();
                 } 
             }
         }
@@ -156,7 +156,7 @@
         /// <summary>
         /// Resizes the array on the column. Adds an extra column to the array and copies the old data to the new array.
         /// </summary>
-        public void ResizeColSize()
+        public bool AddCol()
         {
             T[,] temp = new T[matrix.GetLength(0), matrix.GetLength(1) + 1];
 
@@ -169,12 +169,14 @@
             }
 
             matrix = temp;
+
+            return true;
         }
 
         /// <summary>
         /// Resizes the array on the rows. Adds an extra row to the array and copies the old data to the new array.
         /// </summary>
-        public void ResizeRowSize()
+        public bool AddRow()
         {
             T[,] temp = new T[matrix.GetLength(0) + 1, matrix.GetLength(1)];
 
@@ -187,6 +189,50 @@
             }
 
             matrix = temp;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Removes a column from the end of the matrix (data will be lost)
+        /// </summary>
+        /// <returns></returns>
+        public bool RemoveCol()
+        {
+            T[,] temp = new T[matrix.GetLength(0), matrix.GetLength(1) - 1];
+
+            for(int i = 0; i < temp.GetLength(0); i++)
+            {
+                for(int j = 0; j < temp.GetLength(1); j++)
+                {
+                    temp[i, j] = matrix[i, j];
+                }
+            }
+
+            matrix = temp;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Removes a row from the end of the matrix (data will be lost)
+        /// </summary>
+        /// <returns></returns>
+        public bool RemoveRow()
+        {
+            T[,] temp = new T[matrix.GetLength(0) - 1, matrix.GetLength(1)];
+
+            for(int i = 0; i < temp.GetLength(0); i++)
+            {
+                for(int j = 0; j < temp.GetLength(0); j++)
+                {
+                    temp[i, j] = matrix[i, j];
+                }
+            }
+
+            matrix = temp;
+
+            return true;
         }
 
         /// <summary>
