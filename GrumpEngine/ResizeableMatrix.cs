@@ -1,6 +1,6 @@
 ﻿namespace GrumpEngine
 {
-    class ResizeableMatrix<T>
+    public class ResizeableMatrix<T>
     {
         private T[,] matrix;
 
