@@ -27,9 +27,7 @@ namespace GrumpMapEditor
             else
             {
                 internButton.Text = "-1";
-            }
-
-            internButton.AutoSize = true;
+            }            
 
             internButton.Click += new EventHandler(InternButton_Click);
         }

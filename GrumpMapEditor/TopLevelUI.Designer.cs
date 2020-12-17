@@ -40,12 +40,14 @@ namespace GrumpMapEditor
             // 
             // mapButtonAccessGrid
             // 
+            this.mapButtonAccessGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mapButtonAccessGrid.ColumnCount = 5;
             this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mapButtonAccessGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mapButtonAccessGrid.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.mapButtonAccessGrid.Location = new System.Drawing.Point(12, 12);
             this.mapButtonAccessGrid.Name = "mapButtonAccessGrid";
             this.mapButtonAccessGrid.RowCount = 5;
@@ -128,7 +130,11 @@ namespace GrumpMapEditor
             this.Controls.Add(this.removeRowButton);
             this.Controls.Add(this.addRowButton);
             this.Controls.Add(this.mapButtonAccessGrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TopLevelUI";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Grump Map Creation Tool";
             this.Shown += new System.EventHandler(this.TopLevelUI_Load);
             this.ResumeLayout(false);

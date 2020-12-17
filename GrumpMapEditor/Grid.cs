@@ -85,5 +85,10 @@ namespace GrumpMapEditor
             grid.RemoveCol();
             return true;
         }
+
+        public int GetLength(int dimension)
+        {
+            return grid.GetLength(dimension);
+        }
     }
 }
