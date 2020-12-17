@@ -224,7 +224,7 @@
 
             for(int i = 0; i < temp.GetLength(0); i++)
             {
-                for(int j = 0; j < temp.GetLength(0); j++)
+                for(int j = 0; j < temp.GetLength(1); j++)
                 {
                     temp[i, j] = matrix[i, j];
                 }
