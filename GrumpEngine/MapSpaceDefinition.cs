@@ -18,6 +18,7 @@ namespace GrumpEngine
         public MapSpaceDefinition(int row, int col)
         {
             mapSpace = new ResizeableMatrix<EncounterType>(row, col);
+            mapSpace.Fill(new EncounterType(0));
         }
 
         /// <summary>
@@ -45,7 +46,14 @@ namespace GrumpEngine
         /// </summary>
         public bool AddColumn()
         {
-            return mapSpace.AddCol();
+            mapSpace.AddCol();
+
+            for(int i = 0; i < mapSpace.GetLength(0); i++)
+            {
+                mapSpace.Add(new EncounterType(0));
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -53,7 +61,14 @@ namespace GrumpEngine
         /// </summary>
         public bool AddRow()
         {
-            return mapSpace.AddRow();
+            mapSpace.AddRow();
+
+            for(int i = 0; i < mapSpace.GetLength(1); i++)
+            {
+                mapSpace.Add(new EncounterType(0));
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -22,120 +22,77 @@ namespace GrumpMapEditor
 
         private void TopLevelUI_Load(object sender, EventArgs e)
         {
-            buttonGrid = new Grid(edit.Map);
-
-            //for(int i = 0; i < buttonGrid.ButtonGrid.GetLength(0); i++)
-            //{
-            //    for(int j = 0; j < buttonGrid.ButtonGrid.GetLength(1); j++)
-            //    {
-            //        Button temp = buttonGrid.GetButton(i, j).Button;
-            //        mapButtonAccessGrid.Controls.Add(temp, i, j);
-            //        temp.Width = mapButtonAccessGrid.GetColumnWidths()[j];
-            //        temp.Height = mapButtonAccessGrid.GetRowHeights()[i];
-            //    }
-            //}
+            buttonGrid = new Grid(edit.Map, new Point(12, 12), 452, 426, 5, 5);
+            ReAddControls();
         }
 
         private void RemoveColButton_OnClick(object sender, EventArgs e)
         {
-            //if (mapButtonAccessGrid.ColumnCount > 1 && buttonGrid.RemoveCol())
-            //{
-            //    //mapButtonAccessGrid.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-
-            //    outputTextBox.AppendText("Removing a column (data will be lost)...");
-            //    outputTextBox.AppendText(Environment.NewLine);
-
-            //    for (int i = 0; i < mapButtonAccessGrid.RowCount; i++)
-            //    {
-            //        mapButtonAccessGrid.Controls.Remove(mapButtonAccessGrid.GetControlFromPosition(mapButtonAccessGrid.ColumnCount - 1, i));
-            //    }
-
-            //    mapButtonAccessGrid.ColumnCount--;                
-            //    mapButtonAccessGrid.Refresh();
-            //    return;
-            //}
-            //outputTextBox.AppendText("Failed to remove a column (likely tried to remove all columns)");
-            //outputTextBox.AppendText(Environment.NewLine);
+            if (buttonGrid.GetLength(1) > 1)
+            {
+                outputTextBox.AppendText("Removing a column (data will be lost)...");
+                outputTextBox.AppendText(Environment.NewLine);
+                RemoveControls();
+                buttonGrid.RemoveCol();
+                ReAddControls();
+                return;
+            }
+            outputTextBox.AppendText("Failed to remove a column (cannot remove the last column)...");
+            outputTextBox.AppendText(Environment.NewLine);
         }
 
 
         private void RemoveRowButton_OnClick(object sender, EventArgs e)
         {
-            //if (mapButtonAccessGrid.RowCount > 1)
-            //{
-            //    //mapButtonAccessGrid.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
-
-            //    outputTextBox.AppendText("Removing a row (data will be lost)...");
-            //    outputTextBox.AppendText(Environment.NewLine);
-            //    for (int i = 0; i < buttonGrid.GetLength(1); i++)
-            //    {
-            //        mapButtonAccessGrid.Controls.Remove(mapButtonAccessGrid.GetControlFromPosition(i, mapButtonAccessGrid.RowCount - 1));
-            //    }
-            //    mapButtonAccessGrid.RowCount--;
-                
-            //    mapButtonAccessGrid.Refresh();
-            //    return;
-            //}
-            //outputTextBox.AppendText("Failed to remove a row (likely tried to remove all rows)");
-            //outputTextBox.AppendText(Environment.NewLine);
+            if (buttonGrid.GetLength(0) > 1)
+            {
+                outputTextBox.AppendText("Removing a row (data will be lost)...");
+                outputTextBox.AppendText(Environment.NewLine);
+                RemoveControls();
+                buttonGrid.RemoveRow();
+                ReAddControls();
+                return;
+            }
+            outputTextBox.AppendText("Failed to remove a row (cannot remove the last row)...");
+            outputTextBox.AppendText(Environment.NewLine);
         }
 
         private void AddRowButton_OnClick(object sender, EventArgs e)
         {
-            //if (buttonGrid.AddRow())
-            //{
-            //    //mapButtonAccessGrid.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
-            //    outputTextBox.AppendText("Adding a new row...");
-            //    outputTextBox.AppendText(Environment.NewLine);
-            //    outputTextBox.AppendText($"{buttonGrid.GetLength(0)}");
-            //    RowStyle temp = mapButtonAccessGrid.RowStyles[mapButtonAccessGrid.RowCount - 1];
-            //    mapButtonAccessGrid.RowCount++;
-            //    mapButtonAccessGrid.RowStyles.Add(new RowStyle(temp.SizeType, temp.Height));
-            //    AddNewRowControls();
-            //    outputTextBox.AppendText($"{buttonGrid.GetLength(0)}");
-            //    mapButtonAccessGrid.Refresh();
-            //    return;
-            //}
-            //outputTextBox.AppendText("Failed to add a new row...");
-            //outputTextBox.AppendText(Environment.NewLine);            
+            outputTextBox.AppendText("Adding a row...");
+            outputTextBox.AppendText(Environment.NewLine);
+            buttonGrid.AddRow();
+            ReAddControls();            
         }
 
         private void AddColumnButton_OnClick(object sender, EventArgs e)
         {
-            //if (buttonGrid.AddCol())
-            //{
-            //    //mapButtonAccessGrid.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            //    outputTextBox.AppendText("Adding a new column...");
-            //    outputTextBox.AppendText(Environment.NewLine);
-            //    outputTextBox.AppendText($"{buttonGrid.GetLength(1)}");
-            //    ColumnStyle temp = mapButtonAccessGrid.ColumnStyles[mapButtonAccessGrid.ColumnCount - 1];
-            //    mapButtonAccessGrid.ColumnCount++;
-            //    mapButtonAccessGrid.ColumnStyles.Add(new ColumnStyle(temp.SizeType, temp.Width));
-            //    AddNewColControls();
-            //    outputTextBox.AppendText($"{buttonGrid.GetLength(1)}");
-            //    mapButtonAccessGrid.Refresh();
-            //    return;
-            //}
-            //outputTextBox.AppendText("Failed to add a new column...");
-            //outputTextBox.AppendText(Environment.NewLine);
+            outputTextBox.AppendText("Adding a column...");
+            outputTextBox.AppendText(Environment.NewLine);
+            buttonGrid.AddCol();
+            ReAddControls();
         }
 
-        private void AddNewRowControls()
+        private void ReAddControls()
         {
-            //for(int i = 0; i < mapButtonAccessGrid.ColumnCount; i++)
-            //{
-            //    Button temp = buttonGrid.GetButton(mapButtonAccessGrid.RowCount - 1, i).Button;
-            //    mapButtonAccessGrid.Controls.Add(temp, mapButtonAccessGrid.RowCount - 1, i);
-            //}
+            for (int i = 0; i < buttonGrid.GetLength(0); i++)
+            {
+                for (int j = 0; j < buttonGrid.GetLength(1); j++)
+                {
+                    this.Controls.Add(buttonGrid.GetButton(i, j).Button);
+                }
+            }
         }
 
-        private void AddNewColControls()
+        private void RemoveControls()
         {
-            //for (int i = 0; i < mapButtonAccessGrid.RowCount; i++)
-            //{
-            //    Button temp = buttonGrid.GetButton(i, mapButtonAccessGrid.ColumnCount - 1).Button;
-            //    mapButtonAccessGrid.Controls.Add(temp, i, mapButtonAccessGrid.ColumnCount - 1);
-            //}
+            for(int i = 0; i < buttonGrid.GetLength(0); i++)
+            {
+                for(int j = 0; j < buttonGrid.GetLength(1); j++)
+                {
+                    this.Controls.Remove(buttonGrid.GetButton(i, j).Button);
+                }
+            }
         }
     }
 }
