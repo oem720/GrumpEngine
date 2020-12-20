@@ -85,6 +85,7 @@ namespace GrumpMapEditor
             this.exportButton.TabIndex = 5;
             this.exportButton.Text = "Save/Export Map";
             this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // outputTextBox
             // 
