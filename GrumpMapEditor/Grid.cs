@@ -44,7 +44,7 @@ namespace GrumpMapEditor
             {
                 for(int j = 0; j < grid.GetLength(1); j++)
                 {
-                    grid.Add(new EncounterSelectionButton(mMap.GetTileValue(i, j)));
+                    grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(i, j)));
                 }
             }
             CreateButtonSizesAndCoordinates();
@@ -54,7 +54,7 @@ namespace GrumpMapEditor
         {
             for(int i = 0; i < grid.GetLength(0); i++)
             {
-                grid.Add(new EncounterSelectionButton(mMap.GetTileValue(i, grid.GetLength(1) - 1)));
+                grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(i, grid.GetLength(1) - 1)));
             }
             CreateButtonSizesAndCoordinates();
         }
@@ -63,7 +63,7 @@ namespace GrumpMapEditor
         {
             for (int i = 0; i < grid.GetLength(1); i++)
             {
-                grid.Add(new EncounterSelectionButton(mMap.GetTileValue(grid.GetLength(0) - 1, i)));
+                grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(grid.GetLength(0) - 1, i)));
             }
             CreateButtonSizesAndCoordinates();
         }

@@ -1,5 +1,4 @@
-﻿
-namespace GrumpMapEditor
+﻿namespace GrumpMapEditor
 {
     partial class EncounterEditor
     {
@@ -29,20 +28,36 @@ namespace GrumpMapEditor
         /// </summary>
         private void InitializeComponent()
         {
+            this.descriptorTagSelector = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
+            // 
+            // descriptorTagSelector
+            // 
+            this.descriptorTagSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.descriptorTagSelector.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.descriptorTagSelector.FormattingEnabled = true;
+            this.descriptorTagSelector.Location = new System.Drawing.Point(12, 12);
+            this.descriptorTagSelector.Name = "descriptorTagSelector";
+            this.descriptorTagSelector.Size = new System.Drawing.Size(121, 21);
+            this.descriptorTagSelector.TabIndex = 0;
+            this.descriptorTagSelector.DropDown += new System.EventHandler(this.TagSelectorAddBox_OnDropDown);
             // 
             // EncounterEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(469, 281);
+            this.Controls.Add(this.descriptorTagSelector);
             this.Name = "EncounterEditor";
-            this.Text = "EncounterEditor";
+            this.Text = "Encounter Editor";
             this.Load += new System.EventHandler(this.Editor_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox descriptorTagSelector;
     }
 }

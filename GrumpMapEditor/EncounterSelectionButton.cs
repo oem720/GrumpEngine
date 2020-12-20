@@ -11,14 +11,12 @@ namespace GrumpMapEditor
     class EncounterSelectionButton
     {
         Button internButton;
-        EncounterType mET;
-
-        EncounterEditor mEE = new EncounterEditor();
-
-        public EncounterSelectionButton(EncounterType et)
+        EncounterEditor mEE;
+        
+        public EncounterSelectionButton(ref EncounterType et)
         {
             internButton = new Button();
-            mET = et;
+            mEE = new EncounterEditor(ref et);
 
             if(et != null)
             {
@@ -41,7 +39,7 @@ namespace GrumpMapEditor
         {
             if (mEE.Visible)
             {
-                mEE.Close();
+                mEE.Hide();
             }
             else
             {

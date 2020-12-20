@@ -1,25 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using GrumpEngine;
 
 namespace GrumpMapEditor
 {
     public partial class EncounterEditor : Form
     {
-        public EncounterEditor()
+        EncounterType internEncounterType;
+
+        public EncounterEditor(ref EncounterType et)
         {
+            internEncounterType = et;
             InitializeComponent();
         }
 
         private void Editor_Load(object sender, EventArgs e)
         {
+            foreach(var item in Enum.GetValues(typeof(Tag)))
+            {
+                descriptorTagSelector.Items.Add(item);
+            }
+        }
 
+        private void TagSelectorAddBox_OnDropDown(object sender, EventArgs e)
+        {
+            int newWidth = (int)descriptorTagSelector.CreateGraphics().MeasureString(((ComboBox)sender).Items[0].ToString(), descriptorTagSelector.Font).Width;
+            foreach (Tag s in ((ComboBox)sender).Items)
+            {
+                if (newWidth < (int)descriptorTagSelector.CreateGraphics().MeasureString(s.ToString(), descriptorTagSelector.Font).Width)
+                {
+                    newWidth = (int)descriptorTagSelector.CreateGraphics().MeasureString(s.ToString(), descriptorTagSelector.Font).Width;
+                }                
+            }
+            descriptorTagSelector.DropDownWidth = newWidth;
         }
     }
 }

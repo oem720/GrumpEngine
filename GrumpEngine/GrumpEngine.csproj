@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DescriptorString.cs" />
     <Compile Include="Entities\EntityTemplate.cs" />
     <Compile Include="TopLayerShell.cs">
       <SubType>Form</SubType>

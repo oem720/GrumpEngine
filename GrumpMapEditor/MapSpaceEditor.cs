@@ -37,11 +37,11 @@ namespace GrumpMapEditor
             {
                 for (int j = 0; j < mapInEdit.GetLength(1); j++)
                 {
-                    List<string> temp = mapInEdit.GetTileValue(i, j).Descriptors;
+                    List<DescriptorString> temp = mapInEdit.GetTileValue(i, j).Descriptors;
 
                     if(temp != null)
                     {
-                        foreach (string s in temp)
+                        foreach (DescriptorString s in temp)
                         {
                             file.WriteLine($"{i}, {j}.\t{s}");
                         }

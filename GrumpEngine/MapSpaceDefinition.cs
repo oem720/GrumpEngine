@@ -105,9 +105,9 @@ namespace GrumpEngine
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public EncounterType GetTileValue(int x, int y)
+        public ref EncounterType GetTileValue(int x, int y)
         {
-            return mapSpace.GetValue(x, y);
+            return ref mapSpace.GetValue(x, y);
         }
 
         /// <summary>
@@ -126,17 +126,15 @@ namespace GrumpEngine
         /// <param name="pos"></param>
         /// <param name="newDescriptor"></param>
         /// <param name="newEnt"></param>
-        public void EditEncounterTile(GridPositionPoint pos, string newDescriptor = null, Entity newEnt = null)
+        public void EditEncounterTile(ref EncounterType et, DescriptorString newDescriptor = null, Entity newEnt = null)
         {
-            EncounterType editedPoint = GetTileValue(pos);
-
             if(newDescriptor != null)
             {
-                editedPoint.AddDescriptorString(newDescriptor);                
+                et.AddDescriptorString(newDescriptor);                
             }
             if(newEnt != null)
             {
-                editedPoint.AddEntity(newEnt);
+                et.AddEntity(newEnt);
             }
         }
 

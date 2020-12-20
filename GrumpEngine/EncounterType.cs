@@ -9,45 +9,34 @@ namespace GrumpEngine
     public class EncounterType
     {
         int outwardVisibleValue;
-        List<String> descriptors;
-        List<Entity> entityReg;
+        List<DescriptorString> descriptorRegistry;
+        List<Entity> entityRegistry;
 
         public EncounterType(int value)
         {
             outwardVisibleValue = value;
+            descriptorRegistry = new List<DescriptorString>();
+            entityRegistry = new List<Entity>();
         }
 
-        public EncounterType(int value, List<string> strings)
+        public void AddDescriptorString(DescriptorString entry)
         {
-            outwardVisibleValue = value;
-            descriptors = strings;
-        }
-
-        public EncounterType(int value, List<string> strings, List<Entity> newReg)
-        {
-            outwardVisibleValue = value;
-            descriptors = strings;
-            entityReg = newReg;
-        }
-
-        public void AddDescriptorString(string entry)
-        {
-            descriptors.Add(entry);
+            descriptorRegistry.Add(entry);
         }
 
         public void AddEntity(Entity entry)
         {
-            entityReg.Add(entry);
+            entityRegistry.Add(entry);
         }
 
-        public string RequestString(int index)
+        public DescriptorString RequestString(int index)
         {
-            return descriptors.ElementAt(index);
+            return descriptorRegistry.ElementAt(index);
         }
 
         public Entity RequestEntity(int index)
         {
-            return entityReg.ElementAt(index);
+            return entityRegistry.ElementAt(index);
         }
 
         public int OutwardValue
@@ -56,14 +45,14 @@ namespace GrumpEngine
             set { outwardVisibleValue = value; }
         }
 
-        public List<string> Descriptors
+        public List<DescriptorString> Descriptors
         {
-            get { return descriptors; }
+            get { return descriptorRegistry; }
         }
 
         public List<Entity> EntityRegistry
         {
-            get { return entityReg; }
+            get { return entityRegistry; }
         }
 
         public override string ToString()

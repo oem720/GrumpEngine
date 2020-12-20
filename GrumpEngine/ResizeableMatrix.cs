@@ -283,9 +283,9 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public T GetValue(int x, int y)
+        public ref T GetValue(int x, int y)
         {
-            return matrix[x, y];
+            return ref matrix[x, y];
         }
 
         public override string ToString()
