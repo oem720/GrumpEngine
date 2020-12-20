@@ -20,9 +20,11 @@ namespace GrumpMapEditor
             {
                 descriptorTagSelector.Items.Add(item);
             }
+            descriptorTagSelector.Width = FindGreatestLength(descriptorTagSelector);
+            descriptorTagSelector.DropDownWidth = FindGreatestLength(descriptorTagSelector);
         }
 
-        private void TagSelectorAddBox_OnDropDown(object sender, EventArgs e)
+        private int FindGreatestLength(object sender)
         {
             int newWidth = (int)descriptorTagSelector.CreateGraphics().MeasureString(((ComboBox)sender).Items[0].ToString(), descriptorTagSelector.Font).Width;
             foreach (Tag s in ((ComboBox)sender).Items)
@@ -30,9 +32,9 @@ namespace GrumpMapEditor
                 if (newWidth < (int)descriptorTagSelector.CreateGraphics().MeasureString(s.ToString(), descriptorTagSelector.Font).Width)
                 {
                     newWidth = (int)descriptorTagSelector.CreateGraphics().MeasureString(s.ToString(), descriptorTagSelector.Font).Width;
-                }                
+                }
             }
-            descriptorTagSelector.DropDownWidth = newWidth;
+            return newWidth;
         }
     }
 }

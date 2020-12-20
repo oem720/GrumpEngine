@@ -40,7 +40,6 @@
             this.descriptorTagSelector.Name = "descriptorTagSelector";
             this.descriptorTagSelector.Size = new System.Drawing.Size(121, 21);
             this.descriptorTagSelector.TabIndex = 0;
-            this.descriptorTagSelector.DropDown += new System.EventHandler(this.TagSelectorAddBox_OnDropDown);
             // 
             // EncounterEditor
             // 
