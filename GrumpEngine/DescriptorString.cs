@@ -14,7 +14,10 @@ namespace GrumpEngine
         Environmental_Description,
         Start_Of_Mid_Combat_Lines,
         Mid_Combat_Line,
-        End_Of_Mid_Combat_Line
+        End_Of_Mid_Combat_Line,
+        On_Tile_Enter,
+        On_Tile_Exit,
+        On_Entity_Interact
     }
 
     public class DescriptorString

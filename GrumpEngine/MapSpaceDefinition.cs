@@ -8,7 +8,7 @@ namespace GrumpEngine
 {
     public class MapSpaceDefinition
     {
-        private ResizeableMatrix<EncounterType> mapSpace;
+        private ResizeableMatrix<Tile> mapSpace;
 
         /// <summary>
         /// Creates a new map space using the parameters of rows and cols.
@@ -17,8 +17,8 @@ namespace GrumpEngine
         /// <param name="col"></param>
         public MapSpaceDefinition(int row, int col)
         {
-            mapSpace = new ResizeableMatrix<EncounterType>(row, col);
-            mapSpace.Fill(new EncounterType(0));
+            mapSpace = new ResizeableMatrix<Tile>(row, col);
+            mapSpace.Fill(new Tile(0));
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void PopulateValues(int num)
         {
-            mapSpace.Fill(new EncounterType(num));
+            mapSpace.Fill(new Tile(num));
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace GrumpEngine
         /// </summary>
         /// <param name="point"></param>
         /// <param name="num"></param>
-        public void EditPoint(GridPositionPoint point, EncounterType num)
+        public void EditPoint(GridPositionPoint point, Tile num)
         {
             mapSpace.Replace(num, mapSpace.GetLength(0) - (1 + point.Y), point.X);
         }
@@ -50,7 +50,7 @@ namespace GrumpEngine
 
             for(int i = 0; i < mapSpace.GetLength(0); i++)
             {
-                mapSpace.Add(new EncounterType(0));
+                mapSpace.Add(new Tile(0));
             }
 
             return true;
@@ -65,7 +65,7 @@ namespace GrumpEngine
 
             for(int i = 0; i < mapSpace.GetLength(1); i++)
             {
-                mapSpace.Add(new EncounterType(0));
+                mapSpace.Add(new Tile(0));
             }
 
             return true;
@@ -94,7 +94,7 @@ namespace GrumpEngine
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public EncounterType GetTileValue(GridPositionPoint pos)
+        public Tile GetTileValue(GridPositionPoint pos)
         {
             return mapSpace.GetValue(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
         }
@@ -105,7 +105,7 @@ namespace GrumpEngine
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public ref EncounterType GetTileValue(int x, int y)
+        public ref Tile GetTileValue(int x, int y)
         {
             return ref mapSpace.GetValue(x, y);
         }
@@ -126,7 +126,7 @@ namespace GrumpEngine
         /// <param name="pos"></param>
         /// <param name="newDescriptor"></param>
         /// <param name="newEnt"></param>
-        public void EditEncounterTile(ref EncounterType et, DescriptorString newDescriptor = null, Entity newEnt = null)
+        public void EditEncounterTile(ref Tile et, DescriptorString newDescriptor = null, Entity newEnt = null)
         {
             if(newDescriptor != null)
             {
