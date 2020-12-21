@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    public class EncounterType
+    public class Tile
     {
         int outwardVisibleValue;
         List<DescriptorString> descriptorRegistry;
         List<Entity> entityRegistry;
 
-        public EncounterType(int value)
+        public Tile(int value)
         {
             outwardVisibleValue = value;
             descriptorRegistry = new List<DescriptorString>();

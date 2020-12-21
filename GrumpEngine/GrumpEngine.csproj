@@ -58,7 +58,7 @@
     </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="EncounterType.cs" />
+    <Compile Include="Tile.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
     <Compile Include="MapSpaceInterpreter.cs" />

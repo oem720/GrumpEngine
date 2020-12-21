@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 using GrumpEngine;
 
 namespace GrumpMapEditor
 {
     public partial class EncounterEditor : Form
     {
-        EncounterType internEncounterType;
+        Tile internEncounterType;
 
-        public EncounterEditor(ref EncounterType et)
+        public EncounterEditor(ref Tile et, )
         {
             internEncounterType = et;
             InitializeComponent();
@@ -16,6 +17,7 @@ namespace GrumpMapEditor
 
         private void Editor_Load(object sender, EventArgs e)
         {
+            this.Name = $"Encounter Editor - [{}, {}]";
             foreach(var item in Enum.GetValues(typeof(Tag)))
             {
                 descriptorTagSelector.Items.Add(item);

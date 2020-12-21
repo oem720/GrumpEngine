@@ -13,7 +13,7 @@ namespace GrumpMapEditor
         Button internButton;
         EncounterEditor mEE;
         
-        public EncounterSelectionButton(ref EncounterType et)
+        public EncounterSelectionButton(ref Tile et)
         {
             internButton = new Button();
             mEE = new EncounterEditor(ref et);
