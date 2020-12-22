@@ -8,24 +8,35 @@ using GrumpEngine;
 
 namespace GrumpMapEditor
 {
-    class EncounterSelectionButton
+    public class EncounterSelectionButton
     {
-        Button internButton;
-        EncounterEditor mEE;
-        
-        public EncounterSelectionButton(ref Tile et)
+#pragma warning disable IDE0044 // Add readonly modifier
+        private Button internButton;
+#pragma warning restore IDE0044 // Add readonly modifier
+        private EncounterEditor mEE;
+#pragma warning disable IDE0044 // Add readonly modifier
+        private Tile internTile;
+#pragma warning restore IDE0044 // Add readonly modifier
+#pragma warning disable IDE0044 // Add readonly modifier
+        private ReturnedTileValueEventArgs args;
+#pragma warning restore IDE0044 // Add readonly modifier
+
+        public EncounterSelectionButton()
         {
             internButton = new Button();
-            mEE = new EncounterEditor(ref et);
+            internTile = new Tile(0);
+            mEE = new EncounterEditor(this);
 
-            if(et != null)
+            if(internTile != null)
             {
-                internButton.Text = et.OutwardValue.ToString();
+                internButton.Text = internTile.OutwardValue.ToString();
             }
             else
             {
                 internButton.Text = "-1";
-            }            
+            }
+
+            args = new ReturnedTileValueEventArgs { EditedTile = internTile };
 
             internButton.Click += new EventHandler(InternButton_Click);
         }
@@ -39,12 +50,34 @@ namespace GrumpMapEditor
         {
             if (mEE.Visible)
             {
-                mEE.Hide();
+                mEE.Close();
             }
             else
             {
+                mEE = new EncounterEditor(this);
                 mEE.Show();
             }
         }
+
+        public void EncounterEditor_Closing(object sender, FormClosingEventArgs e)
+        {
+            mEE.EditorClosing(sender, args);
+            internButton.Text = args.EditedTile.OutwardValue.ToString();
+        }
+
+        public EncounterEditor EditorUserInterface
+        {
+            get { return mEE; }
+        }
+
+        public Tile EditedTile
+        {
+            get { return internTile; }
+        }
+    }
+
+    public class ReturnedTileValueEventArgs : EventArgs
+    {
+        public Tile EditedTile{ get; set; }
     }
 }

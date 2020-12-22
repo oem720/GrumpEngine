@@ -14,7 +14,9 @@ namespace GrumpMapEditor
         const int SPACING_VALUE = 6;
 
         readonly ResizeableMatrix<EncounterSelectionButton> grid;
-        readonly MapSpaceDefinition mMap;
+#pragma warning disable IDE0044 // Add readonly modifier
+        MapSpaceDefinition mMap;
+#pragma warning restore IDE0044 // Add readonly modifier
         Point loc;
         readonly int length, height;
 
@@ -44,7 +46,7 @@ namespace GrumpMapEditor
             {
                 for(int j = 0; j < grid.GetLength(1); j++)
                 {
-                    grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(i, j)));
+                    grid.Add(new EncounterSelectionButton());
                 }
             }
             CreateButtonSizesAndCoordinates();
@@ -54,7 +56,7 @@ namespace GrumpMapEditor
         {
             for(int i = 0; i < grid.GetLength(0); i++)
             {
-                grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(i, grid.GetLength(1) - 1)));
+                grid.Add(new EncounterSelectionButton());
             }
             CreateButtonSizesAndCoordinates();
         }
@@ -63,7 +65,7 @@ namespace GrumpMapEditor
         {
             for (int i = 0; i < grid.GetLength(1); i++)
             {
-                grid.Add(new EncounterSelectionButton(ref mMap.GetTileValue(grid.GetLength(0) - 1, i)));
+                grid.Add(new EncounterSelectionButton());
             }
             CreateButtonSizesAndCoordinates();
         }

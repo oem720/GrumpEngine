@@ -31,14 +31,14 @@ namespace GrumpEngine
         }
 
         /// <summary>
-        /// Edits a specific point on the map at the coordinates listed within the GridPositionPoint passed to it.
+        /// Edits a specific point on the map at the coordinates listed within the coordinates passed to it.
         /// Sets the value at that point to the EncounterType passed to the method.
         /// </summary>
         /// <param name="point"></param>
         /// <param name="num"></param>
-        public void EditPoint(GridPositionPoint point, Tile num)
+        public void EditPoint(int row, int col, Tile num)
         {
-            mapSpace.Replace(num, mapSpace.GetLength(0) - (1 + point.Y), point.X);
+            mapSpace.Replace(num, row, col);
         }
 
         /// <summary>

@@ -10,8 +10,12 @@ namespace GrumpMapEditor
 {
     class MapSpaceEditor
     {
+#pragma warning disable IDE0044 // Add readonly modifier
         MapSpaceDefinition mapInEdit;
+#pragma warning restore IDE0044 // Add readonly modifier
+#pragma warning disable IDE0044 // Add readonly modifier
         GridPositionPoint currentPoint;
+#pragma warning restore IDE0044 // Add readonly modifier
 
         const int DEFAULT_ROWS = 5;
         const int DEFAULT_COLS = 5;
@@ -70,6 +74,17 @@ namespace GrumpMapEditor
             file.WriteLine("#endtileentityregistrydata");
 
             file.Close();
+        }
+
+        public void RefreshDataSet(Grid grid)
+        {
+            for(int i = 0; i < mapInEdit.GetLength(0); i++)
+            {
+                for(int j = 0; j < mapInEdit.GetLength(1); j++)
+                {
+                    mapInEdit.EditPoint(i, j, grid.GetButton(i, j).EditedTile);
+                }
+            }
         }
 
         public override string ToString()

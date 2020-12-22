@@ -42,5 +42,10 @@ namespace GrumpEngine
             get { return descriptorTag; }
             set { descriptorTag = value; }
         }
+
+        public override string ToString()
+        {
+            return $"{descriptorTag} {descriptor}";
+        }
     }
 }

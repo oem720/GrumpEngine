@@ -99,27 +99,36 @@ namespace GrumpMapEditor
 
         private void exportButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "GrumpMap File|*.gmf";
-            saveFileDialog1.Title = "Save a Map File";
-            saveFileDialog1.ShowDialog();
-            StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
-            //Loop the button grid here and add it to the text file
-            MethodInfo[] methodInfos = typeof(TopLevelUI).GetMethods(BindingFlags.Public | BindingFlags.Static);
-            // sort methods by name
-            //Array.Sort(methodInfos, delegate (MethodInfo methodInfo1, MethodInfo methodInfo2)
-            //   { 
-            //       return methodInfo1.Name.CompareTo(methodInfo2.Name); 
-            //   });
+            //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            //saveFileDialog1.Filter = "GrumpMap File|*.gmf";
+            //saveFileDialog1.Title = "Save a Map File";
+            //saveFileDialog1.ShowDialog();
+            //StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
+            ////Loop the button grid here and add it to the text file
+            //MethodInfo[] methodInfos = typeof(TopLevelUI).GetMethods(BindingFlags.Public | BindingFlags.Static);
+            //// sort methods by name
+            ////Array.Sort(methodInfos, delegate (MethodInfo methodInfo1, MethodInfo methodInfo2)
+            ////   { 
+            ////       return methodInfo1.Name.CompareTo(methodInfo2.Name); 
+            ////   });
 
-            // write method names
-            foreach (MethodInfo methodInfo in methodInfos)
+            //// write method names
+            //foreach (MethodInfo methodInfo in methodInfos)
+            //{
+            //    outputTextBox.AppendText(methodInfo.Name);
+            //    writer.WriteLine(methodInfo.Name);
+            //}
+            //writer.Dispose();
+            //writer.Close();
+            edit.WriteToSystem();
+        }
+
+        private void TopLevelUI_OnEnter(object sender, EventArgs e)
+        {
+            if(buttonGrid != null)
             {
-                outputTextBox.AppendText(methodInfo.Name);
-                writer.WriteLine(methodInfo.Name);
+                edit.RefreshDataSet(buttonGrid);
             }
-            writer.Dispose();
-            writer.Close();
         }
     }
 }
