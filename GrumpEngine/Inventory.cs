@@ -58,7 +58,7 @@ namespace GrumpEngine
         /// <param name="e"></param>
         public void addItem(Entity e)
         {
-            if (currentSize + e.GetWeight() > size)
+            if (currentSize + e.Weight > size)
                 inventory.Add(e);
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace GrumpEngine
                 if (inventory.ElementAt(i) == e)
                 {
                     counter++;
-                    currentSize -= e.GetWeight();
+                    currentSize -= e.Weight;
                     inventory.RemoveAt(i);
                 }
             }

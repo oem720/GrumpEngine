@@ -32,9 +32,16 @@ namespace GrumpMapEditor
             get { return mapInEdit; }
         }
 
-        public void WriteToSystem()
+        public void WriteToSystem(string filepath)
         {
-            
+            using(StreamWriter sw = new StreamWriter(filepath))
+            {
+                using(JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    JsonSerializer js = new JsonSerializer();
+                    js.Serialize(jtw, mapInEdit);
+                }
+            }
         }
 
         public void RefreshDataSet(Grid grid)

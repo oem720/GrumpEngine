@@ -10,6 +10,11 @@ namespace GrumpEngine
     {
         private ResizeableMatrix<Tile> mapSpace;
 
+        public ResizeableMatrix<Tile> Map
+        {
+            get { return mapSpace; }
+        }
+
         /// <summary>
         /// Creates a new map space using the parameters of rows and cols.
         /// </summary>

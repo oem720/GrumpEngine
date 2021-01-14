@@ -8,10 +8,7 @@ namespace GrumpEngine
 {
     public interface Entity
     {
-        int GetEntType();
-
-        float GetWeight();
-
-        string GetIdentifier();
+        float Weight { get; set; }
+        string Identifier { get; set; }
     }
 }
