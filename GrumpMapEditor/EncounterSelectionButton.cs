@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GrumpEngine;
 
@@ -24,7 +20,7 @@ namespace GrumpMapEditor
         public EncounterSelectionButton()
         {
             internButton = new Button();
-            internTile = new Tile(0);
+            internTile = new Tile();
             mEE = new EncounterEditor(this);
 
             if(internTile != null)

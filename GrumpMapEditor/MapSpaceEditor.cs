@@ -1,9 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using System.IO;
 using GrumpEngine;
 
@@ -11,26 +6,10 @@ namespace GrumpMapEditor
 {
     class MapSpaceEditor
     {
-#pragma warning disable IDE0044 // Add readonly modifier
-        MapSpaceDefinition mapInEdit;
-#pragma warning restore IDE0044 // Add readonly modifier
-#pragma warning disable IDE0044 // Add readonly modifier
-        GridPositionPoint currentPoint;
-#pragma warning restore IDE0044 // Add readonly modifier
-
         const int DEFAULT_ROWS = 5;
         const int DEFAULT_COLS = 5;
 
-        public MapSpaceEditor()
-        {
-            mapInEdit = new MapSpaceDefinition(DEFAULT_ROWS, DEFAULT_COLS);
-            currentPoint = new GridPositionPoint(0, 0);
-        }
-
-        public MapSpaceDefinition Map
-        {
-            get { return mapInEdit; }
-        }
+        public MapSpaceDefinition Map { get; set; } = new MapSpaceDefinition(DEFAULT_ROWS, DEFAULT_COLS);
 
         public void WriteToSystem(string filepath)
         {
@@ -39,25 +18,20 @@ namespace GrumpMapEditor
                 using(JsonTextWriter jtw = new JsonTextWriter(sw))
                 {
                     JsonSerializer js = new JsonSerializer();
-                    js.Serialize(jtw, mapInEdit);
+                    js.Serialize(jtw, Map);
                 }
             }
         }
 
         public void RefreshDataSet(Grid grid)
         {
-            for(int i = 0; i < mapInEdit.GetLength(0); i++)
+            for(int i = 0; i < Map.GetLength(0); i++)
             {
-                for(int j = 0; j < mapInEdit.GetLength(1); j++)
+                for(int j = 0; j < Map.GetLength(1); j++)
                 {
-                    mapInEdit.EditPoint(i, j, grid.GetButton(i, j).EditedTile);
+                    Map[i, j] = grid.GetButton(i, j).EditedTile;
                 }
             }
-        }
-
-        public override string ToString()
-        {
-            return System.Text.RegularExpressions.Regex.Unescape(mapInEdit.ToString());
         }
     }
 }

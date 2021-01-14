@@ -22,30 +22,14 @@ namespace GrumpEngine
 
     public class DescriptorString
     {
-        string descriptor;
-        Tag descriptorTag;
-
         public DescriptorString(string desc, Tag tag)
         {
-            descriptor = desc;
-            descriptorTag = tag;
+            Descriptor = desc;
+            Tag = tag;
         }
 
-        public string Descriptor
-        {
-            get { return descriptor; }
-            set { descriptor = value; }
-        }
+        public string Descriptor { get; private set; }
 
-        public Tag DescriptorTag
-        {
-            get { return descriptorTag; }
-            set { descriptorTag = value; }
-        }
-
-        public override string ToString()
-        {
-            return $"{descriptorTag} {descriptor}";
-        }
+        public Tag Tag { get; private set; }
     }
 }

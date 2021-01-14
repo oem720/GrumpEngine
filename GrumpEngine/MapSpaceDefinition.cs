@@ -23,27 +23,16 @@ namespace GrumpEngine
         public MapSpaceDefinition(int row, int col)
         {
             mapSpace = new ResizeableMatrix<Tile>(row, col);
-            mapSpace.Fill(new Tile(0));
+            mapSpace.Fill(new Tile());
         }
 
         /// <summary>
         /// Fills the map with the value inputted. It will be filled to capacity, and manual editing of the map will be required.
         /// </summary>
         /// <param name="num"></param>
-        public void PopulateValues(int num)
+        public void PopulateValues()
         {
-            mapSpace.Fill(new Tile(num));
-        }
-
-        /// <summary>
-        /// Edits a specific point on the map at the coordinates listed within the coordinates passed to it.
-        /// Sets the value at that point to the EncounterType passed to the method.
-        /// </summary>
-        /// <param name="point"></param>
-        /// <param name="num"></param>
-        public void EditPoint(int row, int col, Tile num)
-        {
-            mapSpace.Replace(num, row, col);
+            mapSpace.Fill(new Tile());
         }
 
         /// <summary>
@@ -55,7 +44,7 @@ namespace GrumpEngine
 
             for(int i = 0; i < mapSpace.GetLength(0); i++)
             {
-                mapSpace.Add(new Tile(0));
+                mapSpace.Add(new Tile());
             }
 
             return true;
@@ -70,7 +59,7 @@ namespace GrumpEngine
 
             for(int i = 0; i < mapSpace.GetLength(1); i++)
             {
-                mapSpace.Add(new Tile(0));
+                mapSpace.Add(new Tile());
             }
 
             return true;
@@ -95,27 +84,6 @@ namespace GrumpEngine
         }
 
         /// <summary>
-        /// Returns the value at the point passed to it using cartesian.
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        public Tile GetTileValue(GridPositionPoint pos)
-        {
-            return mapSpace.GetValue(mapSpace.GetLength(0) - (1 + pos.Y), pos.X);
-        }
-
-        /// <summary>
-        /// Gets the tile at the specified x and y values, using matrix coords rather than cartesian
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public ref Tile GetTileValue(int x, int y)
-        {
-            return ref mapSpace.GetValue(x, y);
-        }
-
-        /// <summary>
         /// returns the length of the specified dimension.
         /// </summary>
         /// <param name="dimension"></param>
@@ -125,27 +93,16 @@ namespace GrumpEngine
             return mapSpace.GetLength(dimension);
         }
 
-        /// <summary>
-        /// Edits the encounter tile at the given position allowing you to add either a new descriptor or a new Entity
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="newDescriptor"></param>
-        /// <param name="newEnt"></param>
-        public void EditEncounterTile(ref Tile et, DescriptorString newDescriptor = null, Entity newEnt = null)
+        public Tile this[int i, int j]
         {
-            if(newDescriptor != null)
-            {
-                et.AddDescriptorString(newDescriptor);                
-            }
-            if(newEnt != null)
-            {
-                et.AddEntity(newEnt);
-            }
+            get => mapSpace[i, j];
+            set => mapSpace[i, j] = value;
         }
 
-        public override string ToString()
+        public Tile this[GridPositionPoint pos]
         {
-            return mapSpace.ToString();
+            get => mapSpace[pos.X, pos.Y];
+            set => mapSpace[pos.X, pos.Y] = value;
         }
     }
 }

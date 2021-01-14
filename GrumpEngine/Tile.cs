@@ -8,56 +8,34 @@ namespace GrumpEngine
 {
     public class Tile
     {
-        int outwardVisibleValue;
-        List<DescriptorString> descriptorRegistry;
-        List<Entity> entityRegistry;
-
-        public Tile(int value)
-        {
-            outwardVisibleValue = value;
-            descriptorRegistry = new List<DescriptorString>();
-            entityRegistry = new List<Entity>();
-        }
-
         public void AddDescriptorString(DescriptorString entry)
         {
-            descriptorRegistry.Add(entry);
+            Descriptors.Add(entry);
+            if(OutwardValue == 0)
+                OutwardValue = 1;
         }
 
         public void AddEntity(Entity entry)
         {
-            entityRegistry.Add(entry);
+            EntityRegistry.Add(entry);
+            if (OutwardValue == 0)
+                OutwardValue = 1;
         }
 
         public DescriptorString RequestString(int index)
         {
-            return descriptorRegistry.ElementAt(index);
+            return Descriptors.ElementAt(index);
         }
 
         public Entity RequestEntity(int index)
         {
-            return entityRegistry.ElementAt(index);
+            return EntityRegistry.ElementAt(index);
         }
 
-        public int OutwardValue
-        {
-            get { return outwardVisibleValue; }
-            set { outwardVisibleValue = value; }
-        }
+        public int OutwardValue { get; private set; } = 0;
 
-        public List<DescriptorString> Descriptors
-        {
-            get { return descriptorRegistry; }
-        }
+        public List<DescriptorString> Descriptors { get; private set; } = new List<DescriptorString>();
 
-        public List<Entity> EntityRegistry
-        {
-            get { return entityRegistry; }
-        }
-
-        public override string ToString()
-        {
-            return "" + outwardVisibleValue;
-        }
+        public List<Entity> EntityRegistry { get; private set; } = new List<Entity>();
     }
 }

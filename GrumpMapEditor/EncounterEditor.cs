@@ -54,7 +54,7 @@ namespace GrumpMapEditor
 
             foreach(DescriptorString ds in internEncounterType.Descriptors)
             {
-                storedValuesDisplayBox.AppendText($"{ds}");
+                storedValuesDisplayBox.AppendText($"{ds.Tag} -- {ds.Descriptor}");
                 storedValuesDisplayBox.AppendText(Environment.NewLine);
             }
 
@@ -92,7 +92,6 @@ namespace GrumpMapEditor
                 internEncounterType.AddDescriptorString(new DescriptorString(tempDesc, tempTag));
                 outputConsole.AppendText("Descriptor adding successful!");
                 outputConsole.AppendText(Environment.NewLine);
-                internEncounterType.OutwardValue = 1;
                 return;
             }
             outputConsole.AppendText("Failed to add descriptor!");

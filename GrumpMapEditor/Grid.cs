@@ -1,10 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GrumpEngine;
+﻿using GrumpEngine;
 using System.Drawing;
 
 namespace GrumpMapEditor
@@ -37,7 +31,7 @@ namespace GrumpMapEditor
 
         public EncounterSelectionButton GetButton(int x, int y)
         {
-            return grid.GetValue(x, y);
+            return grid[x, y];
         }
 
         private void InitButtons()
@@ -116,9 +110,9 @@ namespace GrumpMapEditor
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
-                    grid.GetValue(i, j).Button.Width = buttonWidth;
-                    grid.GetValue(i, j).Button.Height = buttonHeight;
-                    grid.GetValue(i, j).Button.Location = new Point(loc.X + (j * SPACING_VALUE) + (j * buttonWidth),
+                    grid[i, j].Button.Width = buttonWidth;
+                    grid[i, j].Button.Height = buttonHeight;
+                    grid[i, j].Button.Location = new Point(loc.X + (j * SPACING_VALUE) + (j * buttonWidth),
                         loc.Y + (i * SPACING_VALUE) + (i * buttonHeight));
                 }
             }
