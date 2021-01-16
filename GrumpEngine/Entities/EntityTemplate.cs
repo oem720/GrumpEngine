@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    public class EntityTemplate : Entity
+    public class EntityTemplate : IEntity
     {
         //TODO: add your code here.
 

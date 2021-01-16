@@ -99,7 +99,7 @@ namespace GrumpEngine
             set => mapSpace[i, j] = value;
         }
 
-        public Tile this[GridPositionPoint pos]
+        public Tile this[GridPoint pos]
         {
             get => mapSpace[pos.X, pos.Y];
             set => mapSpace[pos.X, pos.Y] = value;

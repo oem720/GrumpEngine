@@ -10,7 +10,7 @@ namespace GrumpEngine
     {
         private float size;
         private float currentSize;
-        private List<Entity> inventory = new List<Entity>();
+        private List<IEntity> inventory = new List<IEntity>();
         /// <summary>
         /// Overloaded constructor for creating a new inventory.
         /// </summary>
@@ -40,7 +40,7 @@ namespace GrumpEngine
         /// Returns the inventory as List<Entity>.
         /// </summary>
         /// <returns></returns>
-        public List<Entity> GetInventory()
+        public List<IEntity> GetInventory()
         {
             return inventory;
         }
@@ -56,7 +56,7 @@ namespace GrumpEngine
         /// Adds a single item to inventory if there is room available.
         /// </summary>
         /// <param name="e"></param>
-        public void addItem(Entity e)
+        public void addItem(IEntity e)
         {
             if (currentSize + e.Weight > size)
                 inventory.Add(e);
@@ -66,7 +66,7 @@ namespace GrumpEngine
         /// </summary>
         /// <param name="e"></param>
         /// <param name="amount"></param>
-        public void removeItem(Entity e, int amount = 1)
+        public void removeItem(IEntity e, int amount = 1)
         {
             int counter = 0;
             for (int i = 0; i < inventory.Count; i++)

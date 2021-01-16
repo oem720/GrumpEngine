@@ -54,12 +54,12 @@
     <Compile Include="DescriptorString.cs" />
     <Compile Include="Entities\EntityTemplate.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
     <Compile Include="MapSpaceInterpreter.cs" />
-    <Compile Include="GridPositionPoint.cs" />
+    <Compile Include="GridPoint.cs" />
     <Compile Include="MapSpaceDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
