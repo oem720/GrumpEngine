@@ -9,7 +9,7 @@ namespace GrumpMapEditor
         const int DEFAULT_ROWS = 5;
         const int DEFAULT_COLS = 5;
 
-        public MapSpaceDefinition Map { get; set; } = new MapSpaceDefinition(DEFAULT_ROWS, DEFAULT_COLS);
+        public Map Map { get; set; } = new Map(DEFAULT_ROWS, DEFAULT_COLS);
 
         public void WriteToSystem(string filepath)
         {

@@ -58,9 +58,9 @@
     <Compile Include="Tile.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
-    <Compile Include="MapSpaceInterpreter.cs" />
+    <Compile Include="MapInterpreter.cs" />
     <Compile Include="GridPoint.cs" />
-    <Compile Include="MapSpaceDefinition.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

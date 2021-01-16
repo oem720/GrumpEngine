@@ -58,7 +58,7 @@ namespace GrumpMapEditor
                 storedValuesDisplayBox.AppendText(Environment.NewLine);
             }
 
-            foreach(Entity ent in internEncounterType.EntityRegistry)
+            foreach(IEntity ent in internEncounterType.EntityRegistry)
             {
                 storedValuesDisplayBox.AppendText($"{ent}");
                 storedValuesDisplayBox.AppendText(Environment.NewLine);

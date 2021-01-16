@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    public class MapSpaceDefinition
+    public class Map
     {
-        public ResizeableMatrix<Tile> Map { get; private set; }
+        public ResizeableMatrix<Tile> MapGrid { get; private set; }
 
         /// <summary>
         /// Creates a new map space using the parameters of rows and cols.
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
-        public MapSpaceDefinition(int row, int col)
+        public Map(int row, int col)
         {
-            Map = new ResizeableMatrix<Tile>(row, col);
-            Map.Fill(new Tile());
+            MapGrid = new ResizeableMatrix<Tile>(row, col);
+            MapGrid.Fill(new Tile());
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void PopulateValues()
         {
-            Map.Fill(new Tile());
+            MapGrid.Fill(new Tile());
         }
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace GrumpEngine
         /// </summary>
         public bool AddColumn()
         {
-            Map.AddCol();
+            MapGrid.AddCol();
 
-            for(int i = 0; i < Map.GetLength(0); i++)
-                Map.Add(new Tile());
+            for(int i = 0; i < MapGrid.GetLength(0); i++)
+                MapGrid.Add(new Tile());
 
             return true;
         }
@@ -48,10 +48,10 @@ namespace GrumpEngine
         /// </summary>
         public bool AddRow()
         {
-            Map.AddRow();
+            MapGrid.AddRow();
 
-            for(int i = 0; i < Map.GetLength(1); i++)
-                Map.Add(new Tile());
+            for(int i = 0; i < MapGrid.GetLength(1); i++)
+                MapGrid.Add(new Tile());
 
             return true;
         }
@@ -62,7 +62,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public bool RemoveCol()
         {
-            return Map.RemoveCol();
+            return MapGrid.RemoveCol();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public bool RemoveRow()
         {
-            return Map.RemoveRow();
+            return MapGrid.RemoveRow();
         }
 
         /// <summary>
@@ -81,19 +81,19 @@ namespace GrumpEngine
         /// <returns></returns>
         public int GetLength(int dimension)
         {
-            return Map.GetLength(dimension);
+            return MapGrid.GetLength(dimension);
         }
 
         public Tile this[int i, int j]
         {
-            get => Map[i, j];
-            set => Map[i, j] = value;
+            get => MapGrid[i, j];
+            set => MapGrid[i, j] = value;
         }
 
         public Tile this[GridPoint pos]
         {
-            get => Map[pos.X, pos.Y];
-            set => Map[pos.X, pos.Y] = value;
+            get => MapGrid[pos.X, pos.Y];
+            set => MapGrid[pos.X, pos.Y] = value;
         }
     }
 }

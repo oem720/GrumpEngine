@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class MapSpaceInterpreter
+    class MapInterpreter
     {
         public void GetDirectoryMap()
         {

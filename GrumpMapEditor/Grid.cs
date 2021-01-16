@@ -9,12 +9,12 @@ namespace GrumpMapEditor
 
         readonly ResizeableMatrix<EncounterSelectionButton> grid;
 #pragma warning disable IDE0044 // Add readonly modifier
-        MapSpaceDefinition mMap;
+        Map mMap;
 #pragma warning restore IDE0044 // Add readonly modifier
         Point loc;
         readonly int length, height;
 
-        public Grid(MapSpaceDefinition map, Point startLoc, int length, int height, int numRows, int numCols)  
+        public Grid(Map map, Point startLoc, int length, int height, int numRows, int numCols)  
         {
             grid = new ResizeableMatrix<EncounterSelectionButton>(numRows, numCols);
             mMap = map;
