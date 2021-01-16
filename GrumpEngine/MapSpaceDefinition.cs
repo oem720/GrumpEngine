@@ -8,12 +8,7 @@ namespace GrumpEngine
 {
     public class MapSpaceDefinition
     {
-        private ResizeableMatrix<Tile> mapSpace;
-
-        public ResizeableMatrix<Tile> Map
-        {
-            get { return mapSpace; }
-        }
+        public ResizeableMatrix<Tile> Map { get; private set; }
 
         /// <summary>
         /// Creates a new map space using the parameters of rows and cols.
@@ -22,8 +17,8 @@ namespace GrumpEngine
         /// <param name="col"></param>
         public MapSpaceDefinition(int row, int col)
         {
-            mapSpace = new ResizeableMatrix<Tile>(row, col);
-            mapSpace.Fill(new Tile());
+            Map = new ResizeableMatrix<Tile>(row, col);
+            Map.Fill(new Tile());
         }
 
         /// <summary>
@@ -32,7 +27,7 @@ namespace GrumpEngine
         /// <param name="num"></param>
         public void PopulateValues()
         {
-            mapSpace.Fill(new Tile());
+            Map.Fill(new Tile());
         }
 
         /// <summary>
@@ -40,11 +35,11 @@ namespace GrumpEngine
         /// </summary>
         public bool AddColumn()
         {
-            mapSpace.AddCol();
+            Map.AddCol();
 
-            for(int i = 0; i < mapSpace.GetLength(0); i++)
+            for(int i = 0; i < Map.GetLength(0); i++)
             {
-                mapSpace.Add(new Tile());
+                Map.Add(new Tile());
             }
 
             return true;
@@ -55,11 +50,11 @@ namespace GrumpEngine
         /// </summary>
         public bool AddRow()
         {
-            mapSpace.AddRow();
+            Map.AddRow();
 
-            for(int i = 0; i < mapSpace.GetLength(1); i++)
+            for(int i = 0; i < Map.GetLength(1); i++)
             {
-                mapSpace.Add(new Tile());
+                Map.Add(new Tile());
             }
 
             return true;
@@ -71,7 +66,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public bool RemoveCol()
         {
-            return mapSpace.RemoveCol();
+            return Map.RemoveCol();
         }
 
         /// <summary>
@@ -80,7 +75,7 @@ namespace GrumpEngine
         /// <returns></returns>
         public bool RemoveRow()
         {
-            return mapSpace.RemoveRow();
+            return Map.RemoveRow();
         }
 
         /// <summary>
@@ -90,19 +85,19 @@ namespace GrumpEngine
         /// <returns></returns>
         public int GetLength(int dimension)
         {
-            return mapSpace.GetLength(dimension);
+            return Map.GetLength(dimension);
         }
 
         public Tile this[int i, int j]
         {
-            get => mapSpace[i, j];
-            set => mapSpace[i, j] = value;
+            get => Map[i, j];
+            set => Map[i, j] = value;
         }
 
         public Tile this[GridPoint pos]
         {
-            get => mapSpace[pos.X, pos.Y];
-            set => mapSpace[pos.X, pos.Y] = value;
+            get => Map[pos.X, pos.Y];
+            set => Map[pos.X, pos.Y] = value;
         }
     }
 }

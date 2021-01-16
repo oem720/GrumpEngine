@@ -2,8 +2,6 @@
 {
     public class ResizeableMatrix<T>
     {
-        private T[,] matrix;
-
         /// <summary>
         /// Creates a new ResizeableMatrix with the starting size of rows and columns as row and col.
         /// </summary>
@@ -11,16 +9,13 @@
         /// <param name="col"></param>
         public ResizeableMatrix(int row, int col)
         {
-            matrix = new T[row, col];
+            Matrix = new T[row, col];
         }
 
         /// <summary>
         /// Returns the matrix stored within the class.
         /// </summary>
-        public T[,] Matrix
-        {
-            get { return matrix; }
-        }
+        public T[,] Matrix { get; private set; }
 
         /// <summary>
         /// Fills the matrix with the value passed to it.
@@ -29,13 +24,9 @@
         /// <param name="value"></param>
         public void Fill(T value)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    matrix[i, j] = value;
-                }
-            }
+            for (int i = 0; i < Matrix.GetLength(0); i++)
+                for (int j = 0; j < Matrix.GetLength(1); j++)
+                    Matrix[i, j] = value;
         }
 
         /// <summary>
@@ -45,20 +36,19 @@
         /// <param name="value"></param>
         public void Add(T value)
         {
-            for(int i = 0; i < matrix.GetLength(0); i++)
+            for(int i = 0; i < Matrix.GetLength(0); i++)
             {
-                for(int j = 0; j < matrix.GetLength(1); j++)
+                for(int j = 0; j < Matrix.GetLength(1); j++)
                 {
-                    if (matrix[i, j] == null)
+                    if (Matrix[i, j] == null)
                     {                        
-                        matrix[i, j] = value;
+                        Matrix[i, j] = value;
                         return;
                     }                    
                 }
-                if (i == matrix.GetLength(0) - 1)
-                {
-                    AddRow();
-                } 
+
+                if (i == Matrix.GetLength(0) - 1)
+                    AddRow(); 
             }
         }
 
@@ -71,17 +61,17 @@
         /// <param name="col"></param>
         public void Insert(T value, int row, int col)
         {
-            T[,] temp = Count + 1 > matrix.Length ? new T[matrix.GetLength(0) + 1, matrix.GetLength(1)] : new T[matrix.GetLength(0), matrix.GetLength(1)];
+            T[,] temp = Count + 1 > Matrix.Length ? new T[Matrix.GetLength(0) + 1, Matrix.GetLength(1)] : new T[Matrix.GetLength(0), Matrix.GetLength(1)];
 
             for (int i = 0; i <= row; i++)
-                for(int j = 0; j < matrix.GetLength(1); j++)
+                for(int j = 0; j < Matrix.GetLength(1); j++)
                 {
                     if (i == row && j == col)
                     {
                         temp[i, j] = value;
                         break;
                     }
-                    temp[i, j] = matrix[i, j];
+                    temp[i, j] = Matrix[i, j];
                 }
 
             bool hasFinishedFirstRowManipulation = false;
@@ -98,19 +88,19 @@
                     }
 
                     if (j == 0)
-                        temp[i, j] = matrix[i - 1, matrix.GetLength(1) - 1];
+                        temp[i, j] = Matrix[i - 1, Matrix.GetLength(1) - 1];
 
-                    else if(i < matrix.GetLength(0))
-                        temp[i, j] = matrix[i, j - 1];
+                    else if(i < Matrix.GetLength(0))
+                        temp[i, j] = Matrix[i, j - 1];
                 }
-                if(col == matrix.GetLength(1) - 1)
+                if(col == Matrix.GetLength(1) - 1)
                     col--;
 
                 isAtStartOfRow = true;
                 hasFinishedFirstRowManipulation = true;
             }
 
-            matrix = temp;
+            Matrix = temp;
         }
 
         /// <summary>
@@ -122,7 +112,7 @@
         /// <returns></returns>
         public int CompareTo(ResizeableMatrix<T> other)
         {
-            return matrix.Length - other.Matrix.Length;
+            return Matrix.Length - other.Matrix.Length;
         }
 
         /// <summary>
@@ -130,17 +120,13 @@
         /// </summary>
         public bool AddCol()
         {
-            T[,] temp = new T[matrix.GetLength(0), matrix.GetLength(1) + 1];
+            T[,] temp = new T[Matrix.GetLength(0), Matrix.GetLength(1) + 1];
 
-            for(int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for(int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    temp[i, j] = matrix[i, j];
-                }
-            }
+            for(int i = 0; i < Matrix.GetLength(0); i++)
+                for(int j = 0; j < Matrix.GetLength(1); j++)
+                    temp[i, j] = Matrix[i, j];
 
-            matrix = temp;
+            Matrix = temp;
 
             return true;
         }
@@ -150,17 +136,13 @@
         /// </summary>
         public bool AddRow()
         {
-            T[,] temp = new T[matrix.GetLength(0) + 1, matrix.GetLength(1)];
+            T[,] temp = new T[Matrix.GetLength(0) + 1, Matrix.GetLength(1)];
 
-            for(int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for(int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    temp[i, j] = matrix[i, j];
-                }
-            }
+            for(int i = 0; i < Matrix.GetLength(0); i++)
+                for(int j = 0; j < Matrix.GetLength(1); j++)
+                    temp[i, j] = Matrix[i, j];
 
-            matrix = temp;
+            Matrix = temp;
 
             return true;
         }
@@ -171,14 +153,16 @@
         /// <returns></returns>
         public bool RemoveCol()
         {
-            T[,] temp = new T[matrix.GetLength(0), matrix.GetLength(1) - 1];
+            if (Matrix.GetLength(1) - 1 < 1)
+                return false;
+
+            T[,] temp = new T[Matrix.GetLength(0), Matrix.GetLength(1) - 1];
 
             for(int i = 0; i < temp.GetLength(0); i++)
                 for(int j = 0; j < temp.GetLength(1); j++)
-                    temp[i, j] = matrix[i, j];
+                    temp[i, j] = Matrix[i, j];
 
-            matrix = temp;
-
+            Matrix = temp;
             return true;
         }
 
@@ -188,13 +172,16 @@
         /// <returns></returns>
         public bool RemoveRow()
         {
-            T[,] temp = new T[matrix.GetLength(0) - 1, matrix.GetLength(1)];
+            if (Matrix.GetLength(0) - 1 < 1)
+                return false;
+
+            T[,] temp = new T[Matrix.GetLength(0) - 1, Matrix.GetLength(1)];
 
             for(int i = 0; i < temp.GetLength(0); i++)
                 for(int j = 0; j < temp.GetLength(1); j++)
-                    temp[i, j] = matrix[i, j];
+                    temp[i, j] = Matrix[i, j];
 
-            matrix = temp;
+            Matrix = temp;
 
             return true;
         }
@@ -208,9 +195,9 @@
             {
                 int numElements = 0;
 
-                for (int i = 0; i < matrix.GetLength(0); i++)
-                    for (int j = 0; j < matrix.GetLength(1); j++)
-                        if (matrix[i, j] != null)
+                for (int i = 0; i < Matrix.GetLength(0); i++)
+                    for (int j = 0; j < Matrix.GetLength(1); j++)
+                        if (Matrix[i, j] != null)
                             numElements++;
 
                 return numElements;
@@ -222,7 +209,7 @@
         /// </summary>
         public int Length
         {
-            get { return matrix.Length; }
+            get { return Matrix.Length; }
         }
 
         /// <summary>
@@ -232,7 +219,7 @@
         /// <returns></returns>
         public int GetLength(int dimension)
         {
-            return matrix.GetLength(dimension);
+            return Matrix.GetLength(dimension);
         }
 
         public T this[int i, int j]

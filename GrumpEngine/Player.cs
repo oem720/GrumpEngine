@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    enum Directions
+    public enum Directions
     {
         North,
         South,
@@ -14,7 +14,7 @@ namespace GrumpEngine
         West
     }
 
-    class Player
+    public class Player
     {
         private Inventory playerInv;
         private double health, armorCoefficient;
