@@ -38,9 +38,7 @@ namespace GrumpEngine
             Map.AddCol();
 
             for(int i = 0; i < Map.GetLength(0); i++)
-            {
                 Map.Add(new Tile());
-            }
 
             return true;
         }
@@ -53,9 +51,7 @@ namespace GrumpEngine
             Map.AddRow();
 
             for(int i = 0; i < Map.GetLength(1); i++)
-            {
                 Map.Add(new Tile());
-            }
 
             return true;
         }
