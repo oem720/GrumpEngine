@@ -16,40 +16,38 @@ namespace GrumpEngine
 
     class Player
     {
-        //Inventory playerInv;
-        double health, armorCoefficient;
-
-        GridPositionPoint currentPos;
+        private Inventory playerInv;
+        private double health, armorCoefficient;
 
         public Player(double startHealth, double startArmorVal)
         {
             health = startHealth;
             armorCoefficient = startArmorVal;
-            currentPos = new GridPositionPoint(0, 0);
+            Position = new GridPoint(0, 0);
         }
+
+        public GridPoint Position { get; set; }
         
         public void MovePlayer(int spaces, Directions dir)
         {
             switch (dir)
             {
                 case Directions.North:
-                    currentPos.SetCoordinates(currentPos.X, currentPos.Y + spaces);
+                    Position.Y += spaces;
                     break;
 
                 case Directions.South:
-                    currentPos.SetCoordinates(currentPos.X, currentPos.Y - spaces);
+                    Position.Y -= spaces;
                     break;
 
                 case Directions.East:
-                    currentPos.SetCoordinates(currentPos.X + spaces, currentPos.Y);
+                    Position.X += spaces;
                     break;
 
                 case Directions.West:
-                    currentPos.SetCoordinates(currentPos.X - spaces, currentPos.Y);
+                    Position.X -= spaces;
                     break;
             }
         }
-
-
     }
 }

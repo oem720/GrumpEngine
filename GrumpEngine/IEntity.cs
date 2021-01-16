@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    public interface Entity
+    public interface IEntity
     {
         float Weight { get; set; }
         string Identifier { get; set; }

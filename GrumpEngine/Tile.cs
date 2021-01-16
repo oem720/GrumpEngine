@@ -15,7 +15,7 @@ namespace GrumpEngine
                 OutwardValue = 1;
         }
 
-        public void AddEntity(Entity entry)
+        public void AddEntity(IEntity entry)
         {
             EntityRegistry.Add(entry);
             if (OutwardValue == 0)
@@ -27,7 +27,7 @@ namespace GrumpEngine
             return Descriptors.ElementAt(index);
         }
 
-        public Entity RequestEntity(int index)
+        public IEntity RequestEntity(int index)
         {
             return EntityRegistry.ElementAt(index);
         }
@@ -36,6 +36,6 @@ namespace GrumpEngine
 
         public List<DescriptorString> Descriptors { get; private set; } = new List<DescriptorString>();
 
-        public List<Entity> EntityRegistry { get; private set; } = new List<Entity>();
+        public List<IEntity> EntityRegistry { get; private set; } = new List<IEntity>();
     }
 }
