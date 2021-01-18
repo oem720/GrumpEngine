@@ -10,7 +10,7 @@ namespace GrumpEngine
     {
         //implement the required properties for ICharacter
         public int Health { get; private set; } = 25;
-        public double DamageResistance { get; private set; } = 0.0;
+        public float DamageResistance { get; private set; } = 0.0f;
         public int Level { get; private set; } = 1;
         public DialogueTree Dialogue { get; private set; } = null;
         public bool IsTalkable { get; private set; } = false;

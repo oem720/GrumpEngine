@@ -9,7 +9,7 @@ namespace GrumpEngine
     public interface ICharacter : IEntity
     {
         int Health { get; }
-        double DamageResistance { get; }
+        float DamageResistance { get; }
         int Level { get; }
         DialogueTree Dialogue { get; }
         bool IsTalkable { get; }
