@@ -6,15 +6,11 @@ namespace GrumpMapEditor
 {
     public partial class EncounterEditor : Form
     {
-#pragma warning disable IDE0044 // Add readonly modifier
         Tile internEncounterType;
-#pragma warning restore IDE0044 // Add readonly modifier
-        Tag tempTag;
-        string tempDesc;
-
-#pragma warning disable IDE0044 // Add readonly modifier
+        Tag _tag;
+        string _desc;
         EncounterSelectionButton _esb;
-#pragma warning restore IDE0044 // Add readonly modifier
+
 
         public EncounterEditor(EncounterSelectionButton esb)
         {
@@ -67,8 +63,8 @@ namespace GrumpMapEditor
 
         private void TagSelector_OnSelect(object sender, EventArgs e)
         {
-            tempTag = (Tag)descriptorTagSelector.SelectedItem;
-            if (tempDesc != null)
+            _tag = (Tag)descriptorTagSelector.SelectedItem;
+            if (_desc != null)
             {
                 descriptorAdderButton.Enabled = true;
             }
@@ -76,8 +72,8 @@ namespace GrumpMapEditor
 
         private void DescriptorText_TextChanged(object sender, EventArgs e)
         {
-            tempDesc = descriptorText.Text;
-            if (tempTag != 0)
+            _desc = descriptorText.Text;
+            if (_tag != 0)
             {
                 descriptorAdderButton.Enabled = true;
             }
@@ -87,9 +83,9 @@ namespace GrumpMapEditor
         {
             outputConsole.AppendText("Adding descriptor...");
             outputConsole.AppendText(Environment.NewLine);
-            if (tempDesc != null && tempTag != 0)
+            if (_desc != null && _tag != 0)
             {
-                internEncounterType.AddDescriptorString(new DescriptorString(tempDesc, tempTag));
+                internEncounterType.AddDescriptorString(new DescriptorString(_desc, _tag));
                 outputConsole.AppendText("Descriptor adding successful!");
                 outputConsole.AppendText(Environment.NewLine);
                 return;

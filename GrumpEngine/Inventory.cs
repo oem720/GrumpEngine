@@ -6,78 +6,54 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class Inventory
+    public class Inventory
     {
-        private float size;
-        private float currentSize;
-        private List<IEntity> inventory = new List<IEntity>();
+        
         /// <summary>
         /// Overloaded constructor for creating a new inventory.
         /// </summary>
         /// <param name="input"></param>
         public Inventory(int input = 0)
         {
-            size = input;
-            currentSize = input;
+            CarryCapacity = input;
+            CurrentCarryWeight = input;
         }
-        /// <summary>
-        /// Returns the max size of the inventory.
-        /// </summary>
-        /// <returns></returns>
-        public float GetSize()
-        {
-            return size;
-        }
-        /// <summary>
-        /// Returns the current weight of inventory.
-        /// </summary>
-        /// <returns></returns>
-        public float GetCurrentSize()
-        {
-            return currentSize;
-        }
-        /// <summary>
-        /// Returns the inventory as List<Entity>.
-        /// </summary>
-        /// <returns></returns>
-        public List<IEntity> GetInventory()
-        {
-            return inventory;
-        }
-        /// <summary>
-        /// Sets the new max size of the inventory.
-        /// </summary>
-        /// <param name="input"></param>
-        public void setSize(float input)
-        {
-            size = input;
-        }
+        
+        public int CarryCapacity { get; set; }
+        public float CurrentCarryWeight { get; private set; }
+        public List<IEntity> Inv { get; private set; } = new List<IEntity>();
+
         /// <summary>
         /// Adds a single item to inventory if there is room available.
         /// </summary>
         /// <param name="e"></param>
-        public void addItem(IEntity e)
+        public bool AddItem(IEntity e)
         {
-            if (currentSize + e.Weight > size)
-                inventory.Add(e);
+            if (CurrentCarryWeight + e.Weight > CarryCapacity)
+            {
+                Inv.Add(e);
+                return true;
+            }
+            return false;
         }
+
         /// <summary>
         /// Removes a single item from inventory if int is not set.
         /// </summary>
         /// <param name="e"></param>
         /// <param name="amount"></param>
-        public void removeItem(IEntity e, int amount = 1)
+        public void RemoveItem(IEntity e, int amount = 1)
         {
             int counter = 0;
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < Inv.Count; i++)
             {
                 if (counter == amount)
                     break;
-                if (inventory.ElementAt(i) == e)
+                if (Inv.ElementAt(i) == e)
                 {
                     counter++;
-                    currentSize -= e.Weight;
-                    inventory.RemoveAt(i);
+                    CurrentCarryWeight -= e.Weight;
+                    Inv.RemoveAt(i);
                 }
             }
         }
