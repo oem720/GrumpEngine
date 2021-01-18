@@ -12,7 +12,7 @@ namespace GrumpEngine
 
         //Retuns the weight of the entity created.
         public float Weight { get; set; }
-
         public string Identifier { get; set; }
+        public bool IsGrabbable { get; set; }
     }
 }

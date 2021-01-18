@@ -182,7 +182,6 @@
                     temp[i, j] = Matrix[i, j];
 
             Matrix = temp;
-
             return true;
         }
 
@@ -224,8 +223,8 @@
 
         public T this[int i, int j]
         {
-            get => this[i, j];
-            set => this[i, j] = value;
+            get => Matrix[i, j];
+            set => Matrix[i, j] = value;
         }
     }
 }
