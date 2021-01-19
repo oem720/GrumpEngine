@@ -1,6 +1,4 @@
-﻿using GrumpEngine.Entities;
-
-namespace GrumpEngine
+﻿namespace GrumpEngine
 {
     public static class Factory
     {

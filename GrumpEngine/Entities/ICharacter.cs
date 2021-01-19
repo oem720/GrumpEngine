@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GrumpEngine
+﻿namespace GrumpEngine
 {
     public interface ICharacter : IEntity
     {
@@ -14,5 +8,7 @@ namespace GrumpEngine
         DialogueTree Dialogue { get; }
         bool IsTalkable { get; }
         Inventory Inv { get; }
+        Weapon CurrentEquippedWeapon { get; }
+        Armor CurrentEquippedArmor { get; }
     }
 }

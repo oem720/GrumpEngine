@@ -1,6 +1,4 @@
-﻿using GrumpEngine.Entities;
-
-namespace GrumpEngine
+﻿namespace GrumpEngine
 {
     public class Player : ICharacter
     {
@@ -11,6 +9,8 @@ namespace GrumpEngine
         public DialogueTree Dialogue { get; private set; } = null;
         public bool IsTalkable { get; private set; } = false;
         public Inventory Inv { get; private set; } = Factory.ConstructInventory();
+        public Weapon CurrentEquippedWeapon { get; private set; }
+        public Armor CurrentEquippedArmor { get; private set; }
 
         //implement the required properties for IEntity
         public float Weight { get; private set; } = 0.0f;
@@ -22,8 +22,6 @@ namespace GrumpEngine
         public int XP { get; set; } = 0;
         public PlayerClass Class { get; set; }
         public GridPoint CurrentPosition { get; private set; }
-        public Weapon CurrentEquippedWeapon { get; private set; }
-        public Armor CurrentEquippedArmor { get; private set; }
         public int RequiredXPToLevel { get; set; } = 100;
 
         public Player(GridPoint pos, string name = "Player")
