@@ -115,6 +115,7 @@ namespace GrumpMapEditor
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Grump Map Creation Tool";
             this.Activated += new System.EventHandler(this.TopLevelUI_OnEnter);
+            this.Load += new System.EventHandler(this.TopLevelUI_Load_1);
             this.Shown += new System.EventHandler(this.TopLevelUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

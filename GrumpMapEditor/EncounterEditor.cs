@@ -41,26 +41,6 @@ namespace GrumpMapEditor
             return newWidth;
         }
 
-        private void ValueDisplayButton_OnClick(object sender, EventArgs e)
-        {
-            storedValuesDisplayBox.Text = "";
-
-            storedValuesDisplayBox.AppendText($"Current Outward value -- {internEncounterType.OutwardValue}");
-            storedValuesDisplayBox.AppendText(Environment.NewLine);
-
-            foreach(DescriptorString ds in internEncounterType.Descriptors)
-            {
-                storedValuesDisplayBox.AppendText($"{ds.Tag} -- {ds.Descriptor}");
-                storedValuesDisplayBox.AppendText(Environment.NewLine);
-            }
-
-            foreach(IEntity ent in internEncounterType.EntityRegistry)
-            {
-                storedValuesDisplayBox.AppendText($"{ent}");
-                storedValuesDisplayBox.AppendText(Environment.NewLine);
-            }
-        }
-
         private void TagSelector_OnSelect(object sender, EventArgs e)
         {
             _tag = (Tag)descriptorTagSelector.SelectedItem;
@@ -88,10 +68,27 @@ namespace GrumpMapEditor
                 internEncounterType.AddDescriptorString(new DescriptorString(_desc, _tag));
                 outputConsole.AppendText("Descriptor adding successful!");
                 outputConsole.AppendText(Environment.NewLine);
+                storedValuesDisplayBox.Text = "";
+
+                storedValuesDisplayBox.AppendText($"Current Outward value -- {internEncounterType.OutwardValue}");
+                storedValuesDisplayBox.AppendText(Environment.NewLine);
+
+                foreach (DescriptorString ds in internEncounterType.Descriptors)
+                {
+                    storedValuesDisplayBox.AppendText($"{ds.Tag} -- {ds.Descriptor}");
+                    storedValuesDisplayBox.AppendText(Environment.NewLine);
+                }
+
+                foreach (IEntity ent in internEncounterType.EntityRegistry)
+                {
+                    storedValuesDisplayBox.AppendText($"{ent}");
+                    storedValuesDisplayBox.AppendText(Environment.NewLine);
+                }
                 return;
             }
             outputConsole.AppendText("Failed to add descriptor!");
             outputConsole.AppendText(Environment.NewLine);
+
         }
 
         private void SaveButton_OnClick(object sender, EventArgs e)
@@ -107,6 +104,11 @@ namespace GrumpMapEditor
         private void EncounterEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             _esb.EncounterEditor_Closing(sender, e);
+        }
+
+        private void storedValuesDisplayBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

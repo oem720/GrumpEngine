@@ -92,8 +92,8 @@ namespace GrumpMapEditor
         private void exportButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Grump Map File|*.MAP";
-            saveFileDialog1.Title = "Save a Map File";
+            saveFileDialog1.Filter = "Grump Map File|*.GRUMP";
+            saveFileDialog1.Title = "Save a Grump Map File";
             saveFileDialog1.ShowDialog();
             edit.WriteToSystem(saveFileDialog1.FileName);
         }
@@ -104,6 +104,11 @@ namespace GrumpMapEditor
             {
                 edit.RefreshDataSet(buttonGrid);
             }
+        }
+
+        private void TopLevelUI_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

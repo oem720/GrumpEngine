@@ -37,7 +37,6 @@
             this.descriptorTagSelectorLabel = new System.Windows.Forms.Label();
             this.descriptorAdderButton = new System.Windows.Forms.Button();
             this.descriptorText = new System.Windows.Forms.TextBox();
-            this.storedValueDisplay = new System.Windows.Forms.Button();
             this.descriptorTextLabel = new System.Windows.Forms.Label();
             this.entityTypeSelector = new System.Windows.Forms.ComboBox();
             this.entityParameterEntry = new System.Windows.Forms.TextBox();
@@ -76,6 +75,7 @@
             this.storedValuesDisplayBox.ReadOnly = true;
             this.storedValuesDisplayBox.Size = new System.Drawing.Size(319, 219);
             this.storedValuesDisplayBox.TabIndex = 2;
+            this.storedValuesDisplayBox.TextChanged += new System.EventHandler(this.storedValuesDisplayBox_TextChanged);
             // 
             // outputLabel
             // 
@@ -132,16 +132,6 @@
             this.descriptorText.Size = new System.Drawing.Size(487, 20);
             this.descriptorText.TabIndex = 8;
             this.descriptorText.TextChanged += new System.EventHandler(this.DescriptorText_TextChanged);
-            // 
-            // storedValueDisplay
-            // 
-            this.storedValueDisplay.Location = new System.Drawing.Point(338, 252);
-            this.storedValueDisplay.Name = "storedValueDisplay";
-            this.storedValueDisplay.Size = new System.Drawing.Size(319, 41);
-            this.storedValueDisplay.TabIndex = 9;
-            this.storedValueDisplay.Text = "Show Current Values";
-            this.storedValueDisplay.UseVisualStyleBackColor = true;
-            this.storedValueDisplay.Click += new System.EventHandler(this.ValueDisplayButton_OnClick);
             // 
             // descriptorTextLabel
             // 
@@ -212,7 +202,6 @@
             this.Controls.Add(this.entityParameterEntry);
             this.Controls.Add(this.entityTypeSelector);
             this.Controls.Add(this.descriptorTextLabel);
-            this.Controls.Add(this.storedValueDisplay);
             this.Controls.Add(this.descriptorText);
             this.Controls.Add(this.descriptorAdderButton);
             this.Controls.Add(this.descriptorTagSelectorLabel);
@@ -243,7 +232,6 @@
         private System.Windows.Forms.Label descriptorTagSelectorLabel;
         private System.Windows.Forms.Button descriptorAdderButton;
         private System.Windows.Forms.TextBox descriptorText;
-        private System.Windows.Forms.Button storedValueDisplay;
         private System.Windows.Forms.Label descriptorTextLabel;
         private System.Windows.Forms.ComboBox entityTypeSelector;
         private System.Windows.Forms.TextBox entityParameterEntry;
