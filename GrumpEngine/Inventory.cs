@@ -32,6 +32,7 @@ namespace GrumpEngine
             if (CurrentCarryWeight + e.Weight > CarryCapacity)
             {
                 Inv.Add(e);
+                EventCoordinator.RaiseEvent(this, EventHandle.On_Item_Added);
                 return true;
             }
             return false;
@@ -54,6 +55,7 @@ namespace GrumpEngine
                     counter++;
                     CurrentCarryWeight -= e.Weight;
                     Inv.RemoveAt(i);
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Item_Removed);
                 }
             }
         }

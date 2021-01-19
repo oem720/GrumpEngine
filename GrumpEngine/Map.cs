@@ -17,17 +17,8 @@ namespace GrumpEngine
         /// <param name="col"></param>
         public Map(int row, int col)
         {
-            MapGrid = new ResizeableMatrix<Tile>(row, col);
-            MapGrid.Fill(new Tile());
-        }
-
-        /// <summary>
-        /// Fills the map with the value inputted. It will be filled to capacity, and manual editing of the map will be required.
-        /// </summary>
-        /// <param name="num"></param>
-        public void PopulateValues()
-        {
-            MapGrid.Fill(new Tile());
+            MapGrid = Factory.ConstructResizeableMatrix<Tile>(row, col);
+            MapGrid.Fill(Factory.ConstructTile());
         }
 
         /// <summary>
@@ -38,7 +29,7 @@ namespace GrumpEngine
             MapGrid.AddCol();
 
             for(int i = 0; i < MapGrid.GetLength(0); i++)
-                MapGrid.Add(new Tile());
+                MapGrid.Add(Factory.ConstructTile());
 
             return true;
         }
@@ -51,7 +42,7 @@ namespace GrumpEngine
             MapGrid.AddRow();
 
             for(int i = 0; i < MapGrid.GetLength(1); i++)
-                MapGrid.Add(new Tile());
+                MapGrid.Add(Factory.ConstructTile());
 
             return true;
         }

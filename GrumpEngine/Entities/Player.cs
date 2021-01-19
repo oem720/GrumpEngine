@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GrumpEngine.Entities;
 
 namespace GrumpEngine
 {
@@ -14,7 +10,7 @@ namespace GrumpEngine
         public int Level { get; private set; } = 1;
         public DialogueTree Dialogue { get; private set; } = null;
         public bool IsTalkable { get; private set; } = false;
-        public Inventory Inv { get; private set; } = new Inventory();
+        public Inventory Inv { get; private set; } = Factory.ConstructInventory();
 
         //implement the required properties for IEntity
         public float Weight { get; private set; } = 0.0f;
@@ -24,16 +20,17 @@ namespace GrumpEngine
         //Member Auto-Props
         public string Name { get; private set; }
         public int XP { get; set; } = 0;
-
-        //Member Fields
-        private int _requiredXPToLevel;
-        private GridPoint _currentPos;
+        public PlayerClass Class { get; set; }
+        public GridPoint CurrentPosition { get; private set; }
+        public Weapon CurrentEquippedWeapon { get; private set; }
+        public Armor CurrentEquippedArmor { get; private set; }
+        public int RequiredXPToLevel { get; set; } = 100;
 
         public Player(GridPoint pos, string name = "Player")
         {
             Name = name;
-            _currentPos = pos;
-            _requiredXPToLevel = 100;
+            CurrentPosition = pos;
+            RequiredXPToLevel = 100;
         }
 
         /// <summary>
@@ -44,16 +41,23 @@ namespace GrumpEngine
         /// <returns></returns>
         public bool GrantXP(int amount)
         {
+            bool isLeveledUp = false;
             XP += amount;
-            
-            if(XP >= _requiredXPToLevel)
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Player_XP_Granted);
+
+            while(XP >= RequiredXPToLevel)
             {
-                XP -= _requiredXPToLevel;
-                _requiredXPToLevel = (int)(_requiredXPToLevel * 1.5);
-                Level++;
-                return true;
+                if (XP >= RequiredXPToLevel)
+                {
+                    XP -= RequiredXPToLevel;
+                    RequiredXPToLevel = (int)(RequiredXPToLevel * 1.5);
+                    Level++;
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Player_Level_Up);
+                    isLeveledUp = true;
+                }
             }
-            return false;
+            
+            return isLeveledUp;
         }
 
         /// <summary>
@@ -65,16 +69,20 @@ namespace GrumpEngine
             switch (dir)
             {
                 case Directions.North:
-                    _currentPos.Y++;
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Tile_Exit, CurrentPosition, Directions.North);
+                    CurrentPosition.Y++;
                     break;
                 case Directions.South:
-                    _currentPos.Y--;
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Tile_Exit, CurrentPosition, Directions.South);
+                    CurrentPosition.Y--;                    
                     break;
                 case Directions.East:
-                    _currentPos.X++;
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Tile_Exit, CurrentPosition, Directions.East);
+                    CurrentPosition.X++;
                     break;
                 case Directions.West:
-                    _currentPos.X--;
+                    EventCoordinator.RaiseEvent(this, EventHandle.On_Tile_Exit, CurrentPosition, Directions.West);
+                    CurrentPosition.X--;
                     break;
             }                
         }
@@ -87,6 +95,45 @@ namespace GrumpEngine
         public bool PickUpItem(IEntity item)
         {
             return Inv.AddItem(item);
+        }
+
+        /// <summary>
+        /// Adds the weapon from the inventory, removing it from inventory and putting it into the CurrentEquippedWeapon slot.
+        /// If there is a weapon already in hand, that is automatically placed into the inventory
+        /// </summary>
+        /// <param name="wep"></param>
+        public void EquipWeapon(Weapon wep)
+        {
+            if (CurrentEquippedWeapon != null)
+                UnequipCurrentWeapon();
+
+            CurrentEquippedWeapon = wep;
+            Inv.RemoveItem(wep);
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Weapon_Equipped);
+        }
+
+        public void UnequipCurrentWeapon()
+        {
+            Inv.AddItem(CurrentEquippedWeapon);
+            CurrentEquippedWeapon = null;
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Weapon_Unequipped);
+        }
+
+        public void EquipArmor(Armor arm)
+        {
+            if (CurrentEquippedArmor != null)
+                Inv.AddItem(CurrentEquippedArmor);
+
+            CurrentEquippedArmor = arm;
+            Inv.RemoveItem(arm);
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Armor_Equipped);
+        }
+
+        public void UnequipCurrentArmor()
+        {
+            Inv.AddItem(CurrentEquippedArmor);
+            CurrentEquippedArmor = null;
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Armor_Unequipped);
         }
     }
 }

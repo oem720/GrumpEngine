@@ -52,12 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DialogueTree.cs" />
+    <Compile Include="Entities\Armor.cs" />
     <Compile Include="Entities\ICharacter.cs" />
     <Compile Include="DescriptorString.cs" />
     <Compile Include="Entities\EntityTemplate.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="EventCoordinator.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
