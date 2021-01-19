@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
-    class MapInterpreter
+    public static class MapInterpreter
     {
-        public void GetDirectoryMap()
-        {
-            var CurrentDirectory = Directory.GetCurrentDirectory();
-            Console.WriteLine(CurrentDirectory);
-        }
+        
     }
 }
