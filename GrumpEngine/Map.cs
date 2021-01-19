@@ -21,7 +21,6 @@
         public bool AddColumn()
         {
             MapGrid.AddCol();
-
             for(int i = 0; i < MapGrid.GetLength(0); i++)
                 MapGrid.Add(Factory.ConstructTile());
 
@@ -34,7 +33,6 @@
         public bool AddRow()
         {
             MapGrid.AddRow();
-
             for(int i = 0; i < MapGrid.GetLength(1); i++)
                 MapGrid.Add(Factory.ConstructTile());
 
