@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GrumpSerializer
+namespace GrumpEngine.Serializer
 {
     public class SaveSerializer : IGrumpSerializer
     {

@@ -58,6 +58,12 @@
     <Compile Include="Enums.cs" />
     <Compile Include="EventCoordinator.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="Serializer\IGrumpDeserializer.cs" />
+    <Compile Include="Serializer\IGrumpSerializer.cs" />
+    <Compile Include="Serializer\MapDeserializer.cs" />
+    <Compile Include="Serializer\MapSerializer.cs" />
+    <Compile Include="Serializer\SaveDeserializer.cs" />
+    <Compile Include="Serializer\SaveSerializer.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ResizeableMatrix.cs" />
@@ -69,12 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GrumpSerializer\GrumpSerializer.csproj">
-      <Project>{8537e933-7aba-48ae-90f6-4ba5338bd72b}</Project>
-      <Name>GrumpSerializer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

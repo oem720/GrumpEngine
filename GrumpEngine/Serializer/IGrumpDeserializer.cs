@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace GrumpSerializer
+namespace GrumpEngine.Serializer
 {
     public interface IGrumpDeserializer
     {
