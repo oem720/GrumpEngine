@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -38,14 +39,40 @@ namespace GrumpMapEditor
 
         private void RemoveRowButton_OnClick(object sender, EventArgs e)
         {
+            //var result = MessageBox.Show("Hi", "Help", MessageBoxButtons.YesNo);
+            //bool dataExists = true;
             if (buttonGrid.GetLength(0) > 1)
             {
-                outputTextBox.AppendText("Removing a row (data will be lost)...");
-                outputTextBox.AppendText(Environment.NewLine);
-                RemoveControls();
-                buttonGrid.RemoveRow();
-                ReAddControls();
-                return;
+                //for (int i = 0; i < buttonGrid.GetLength(0); i++)
+                //    for (int j = 0; j < buttonGrid.GetLength(1); j++)
+                //    {
+                //        if (int.TryParse(buttonGrid.GetButton(i, j).Button.Text, out int result) && result > 0)
+                //        {
+                //            dataExists = true;
+                //        }
+                //    }
+                //if (true)
+                //{
+                //    //DialogResult confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!");
+                //    if (confirmResult == DialogResult.Yes)
+                //    {
+                //        outputTextBox.AppendText("Removing a row.");
+                //        outputTextBox.AppendText(Environment.NewLine);
+                //        RemoveControls();
+                //        buttonGrid.RemoveRow();
+                //        ReAddControls();
+                //        return;
+                //    }
+                //}
+                //else
+                //{
+                    outputTextBox.AppendText("Removing a row (data will be lost)...");
+                    outputTextBox.AppendText(Environment.NewLine);
+                    RemoveControls();
+                    buttonGrid.RemoveRow();
+                    ReAddControls();
+                    return;
+                //}
             }
             outputTextBox.AppendText("Failed to remove a row (cannot remove the last row)...");
             outputTextBox.AppendText(Environment.NewLine);
