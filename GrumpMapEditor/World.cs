@@ -8,6 +8,7 @@ namespace GrumpMapEditor
         [STAThread]
         static void Main()
         {
+            //var result = MessageBox.Show("Hi", "Help", MessageBoxButtons.YesNo);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TopLevelUI());

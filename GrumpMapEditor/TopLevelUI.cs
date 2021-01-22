@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -23,56 +22,92 @@ namespace GrumpMapEditor
 
         private void RemoveColButton_OnClick(object sender, EventArgs e)
         {
+            bool dataExists = false;
             if (buttonGrid.GetLength(1) > 1)
             {
-                outputTextBox.AppendText("Removing a column (data will be lost)...");
-                outputTextBox.AppendText(Environment.NewLine);
-                RemoveControls();
-                buttonGrid.RemoveCol();
-                ReAddControls();
-                return;
+                for (int i = 0; i < buttonGrid.GetLength(0); i++)
+                    for (int j = 0; j < buttonGrid.GetLength(1); j++)
+                    {
+                        string test = buttonGrid.GetButton(i, j).Button.Text;
+                        if (j == buttonGrid.GetLength(1) - 1 && int.TryParse(test, out int result) && result > 0)
+                        {
+                            dataExists = true;
+                        }
+                    }
+                if (dataExists)
+                {
+                    var confirmResult = MessageBox.Show("Are you sure to remove this column? There is data that will be lost forever.", "Remove confirmation", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        outputTextBox.AppendText("Removing a column.");
+                        outputTextBox.AppendText(Environment.NewLine);
+                        RemoveControls();
+                        buttonGrid.RemoveCol();
+                        ReAddControls();
+                        return;
+                    } else
+                    {
+                        outputTextBox.AppendText("Removing column aborted!");
+                        outputTextBox.AppendText(Environment.NewLine);
+                        return;
+                    }
+                }
+                else
+                {
+                    outputTextBox.AppendText("Removing a column.");
+                    outputTextBox.AppendText(Environment.NewLine);
+                    RemoveControls();
+                    buttonGrid.RemoveCol();
+                    ReAddControls();
+                    return;
+                }
             }
-            outputTextBox.AppendText("Failed to remove a column (cannot remove the last column)...");
+            outputTextBox.AppendText("Failed to remove a column (cannot remove the last row)...");
             outputTextBox.AppendText(Environment.NewLine);
         }
 
 
         private void RemoveRowButton_OnClick(object sender, EventArgs e)
         {
-            //var result = MessageBox.Show("Hi", "Help", MessageBoxButtons.YesNo);
-            //bool dataExists = true;
+            bool dataExists = false;
             if (buttonGrid.GetLength(0) > 1)
             {
-                //for (int i = 0; i < buttonGrid.GetLength(0); i++)
-                //    for (int j = 0; j < buttonGrid.GetLength(1); j++)
-                //    {
-                //        if (int.TryParse(buttonGrid.GetButton(i, j).Button.Text, out int result) && result > 0)
-                //        {
-                //            dataExists = true;
-                //        }
-                //    }
-                //if (true)
-                //{
-                //    //DialogResult confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!");
-                //    if (confirmResult == DialogResult.Yes)
-                //    {
-                //        outputTextBox.AppendText("Removing a row.");
-                //        outputTextBox.AppendText(Environment.NewLine);
-                //        RemoveControls();
-                //        buttonGrid.RemoveRow();
-                //        ReAddControls();
-                //        return;
-                //    }
-                //}
-                //else
-                //{
-                    outputTextBox.AppendText("Removing a row (data will be lost)...");
+                for (int i = 0; i < buttonGrid.GetLength(0); i++)
+                    for (int j = 0; j < buttonGrid.GetLength(1); j++)
+                    {
+                        string test = buttonGrid.GetButton(i, j).Button.Text;
+                        if (i == buttonGrid.GetLength(0) - 1 && int.TryParse(test, out int result) && result > 0)
+                        {
+                            dataExists = true;
+                        }
+                    }
+                if (dataExists)
+                {
+                    var confirmResult = MessageBox.Show("Are you sure to remove this row? There is data that will be lost forever.", "Remove confirmation", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        outputTextBox.AppendText("Removing a row.");
+                        outputTextBox.AppendText(Environment.NewLine);
+                        RemoveControls();
+                        buttonGrid.RemoveRow();
+                        ReAddControls();
+                        return;
+                    } else
+                    {
+                        outputTextBox.AppendText("Removing row aborted!");
+                        outputTextBox.AppendText(Environment.NewLine);
+                        return;
+                    }
+                }
+                else
+                {
+                    outputTextBox.AppendText("Removing a row.");
                     outputTextBox.AppendText(Environment.NewLine);
                     RemoveControls();
                     buttonGrid.RemoveRow();
                     ReAddControls();
                     return;
-                //}
+                }
             }
             outputTextBox.AppendText("Failed to remove a row (cannot remove the last row)...");
             outputTextBox.AppendText(Environment.NewLine);
