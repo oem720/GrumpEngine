@@ -58,8 +58,6 @@
     <Compile Include="Enums.cs" />
     <Compile Include="EventCoordinator.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="Serializer\IGrumpDeserializer.cs" />
-    <Compile Include="Serializer\IGrumpSerializer.cs" />
     <Compile Include="Serializer\MapDeserializer.cs" />
     <Compile Include="Serializer\MapSerializer.cs" />
     <Compile Include="Serializer\SaveDeserializer.cs" />

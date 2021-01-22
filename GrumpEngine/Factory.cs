@@ -8,6 +8,11 @@
             return new Tile();
         }
 
+        public static DescriptorString ConstructDescriptorString(string desc, Tag tag)
+        {
+            return new DescriptorString(desc, tag);
+        }
+
         public static Player ConstructPlayer(GridPoint pos, string name)
         {
             return new Player(pos, name);

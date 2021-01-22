@@ -8,7 +8,7 @@
         public int Level { get; private set; } = 1;
         public DialogueTree Dialogue { get; private set; } = null;
         public bool IsTalkable { get; private set; } = false;
-        public Inventory Inv { get; private set; } = Factory.ConstructInventory();
+        public Inventory Inv { get; private set; } = Factory.ConstructInventory(10);
         public Weapon CurrentEquippedWeapon { get; private set; }
         public Armor CurrentEquippedArmor { get; private set; }
 

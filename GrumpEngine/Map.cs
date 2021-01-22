@@ -12,7 +12,14 @@
         public Map(int row, int col)
         {
             MapGrid = Factory.ConstructResizeableMatrix<Tile>(row, col);
-            MapGrid.Fill(Factory.ConstructTile());
+            Fill();
+        }
+
+        private void Fill()
+        {
+            for (int i = 0; i < MapGrid.GetLength(0); i++)
+                for (int j = 0; j < MapGrid.GetLength(1); j++)
+                    MapGrid[i, j] = Factory.ConstructTile();
         }
 
         /// <summary>

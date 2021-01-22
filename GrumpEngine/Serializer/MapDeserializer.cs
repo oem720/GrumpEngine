@@ -5,9 +5,9 @@ using System.IO;
 
 namespace GrumpEngine.Serializer
 {
-    public class MapDeserializer : IGrumpDeserializer
+    public static class MapDeserializer
     {
-        public void Deserialize(string filepath, StreamReader sr)
+        public static void Deserialize(string filepath, StreamReader sr)
         {
 
         }

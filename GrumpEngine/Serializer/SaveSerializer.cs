@@ -4,11 +4,16 @@ using System.Text;
 
 namespace GrumpEngine.Serializer
 {
-    public class SaveSerializer : IGrumpSerializer
+    public class SaveSerializer
     {
-        public string Serialize(object obj)
+        public void Serialize(object obj)
         {
-            return null;
+            
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }
