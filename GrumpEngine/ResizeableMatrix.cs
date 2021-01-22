@@ -12,12 +12,18 @@ namespace GrumpEngine
         public ResizeableMatrix(int row, int col)
         {
             Matrix = new T[row, col];
+            Rows = row;
+            Cols = col;
         }
 
         /// <summary>
         /// Returns the matrix stored within the class.
         /// </summary>
         public T[,] Matrix { get; private set; }
+
+        public int Rows { get; private set; }
+
+        public int Cols { get; private set; }
 
         /// <summary>
         /// Finds an empty slot on the matrix and slides the value into it.
@@ -215,16 +221,6 @@ namespace GrumpEngine
         {
             get => Matrix[i, j];
             set => Matrix[i, j] = value;
-        }
-
-        public T GetValue(int i, int j)
-        {
-            return Matrix[i, j];
-        }
-
-        public void SetValue(int i, int j, T value)
-        {
-            Matrix[i, j] = value;
         }
     }
 }

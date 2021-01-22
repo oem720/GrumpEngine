@@ -30,7 +30,6 @@ namespace GrumpEngine.Serializer
 
                 object[,] tiles = (object[,])props[0].GetValue(obj);
                 for(int i = 0; i < tiles.GetLength(0); i++)
-                {
                     for (int j = 0; j < tiles.GetLength(1); j++)
                     {
                         if(j == tiles.GetLength(1) - 1 && i == tiles.GetLength(0) - 1)
@@ -39,10 +38,7 @@ namespace GrumpEngine.Serializer
                             continue;
                         }
                         sb.Append($"{Serialize(tiles[i, j])},");
-                    }
-                    if(i < tiles.GetLength(0) - 1)
-                        sb.AppendLine();
-                }                    
+                    }                  
             }
             //Step 3: Serialize each Tile (called during Step 2)
             else if (objType.Equals(typeof(Tile)))

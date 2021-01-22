@@ -9,7 +9,13 @@ namespace GrumpEngine.Serializer
     {
         public static string Deserialize(string input)
         {
-            return null;
+            string[] split = input.Split('-');
+            byte[] raw = new byte[split.Length];
+            for(int i = 0; i < split.Length; i++)
+            {
+                raw[i] = Convert.ToByte(split[i], 16);
+            }
+            return Encoding.ASCII.GetString(raw);
         }
     }
 }
