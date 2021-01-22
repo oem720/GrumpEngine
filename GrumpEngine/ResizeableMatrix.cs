@@ -1,4 +1,6 @@
-﻿namespace GrumpEngine
+﻿using System.Collections.Generic;
+
+namespace GrumpEngine
 {
     public class ResizeableMatrix<T>
     {
@@ -16,18 +18,6 @@
         /// Returns the matrix stored within the class.
         /// </summary>
         public T[,] Matrix { get; private set; }
-
-        /// <summary>
-        /// Fills the matrix with the value passed to it.
-        /// Will require point specific editing to change individual values.
-        /// </summary>
-        /// <param name="value"></param>
-        public void Fill(T value)
-        {
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-                for (int j = 0; j < Matrix.GetLength(1); j++)
-                    Matrix[i, j] = value;
-        }
 
         /// <summary>
         /// Finds an empty slot on the matrix and slides the value into it.
@@ -225,6 +215,16 @@
         {
             get => Matrix[i, j];
             set => Matrix[i, j] = value;
+        }
+
+        public T GetValue(int i, int j)
+        {
+            return Matrix[i, j];
+        }
+
+        public void SetValue(int i, int j, T value)
+        {
+            Matrix[i, j] = value;
         }
     }
 }

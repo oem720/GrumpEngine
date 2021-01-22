@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using System.IO;
+﻿using System.IO;
 using GrumpEngine;
+using GrumpEngine.Serializer;
 
 namespace GrumpMapEditor
 {
@@ -15,11 +15,8 @@ namespace GrumpMapEditor
         {
             using(StreamWriter sw = new StreamWriter(filepath))
             {
-                using(JsonTextWriter jtw = new JsonTextWriter(sw))
-                {
-                    JsonSerializer js = new JsonSerializer();
-                    js.Serialize(jtw, Map);
-                }
+                MapSerializer ms = new MapSerializer();
+                sw.Write(ms.Serialize(Map));
             }
         }
 
