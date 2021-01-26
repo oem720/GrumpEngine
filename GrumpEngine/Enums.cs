@@ -35,16 +35,18 @@ namespace GrumpEngine
     //within Grump. If you change, and have weird results, you have no one to blame but yourself.
     public enum Tag
     {
-        Dialogue_Tree_Response = 100,
-        Dialogue_Tree_Choice,
-        Dialogue_Tree_End,
-        Environmental_Description,
-        Start_Of_Mid_Combat_Lines,
-        Mid_Combat_Line,
-        End_Of_Mid_Combat_Line,
+        Environmental_Description = 100,
         On_Tile_Enter,
         On_Tile_Exit,
-        On_Entity_Interact
+        On_Entity_Interact,
+        On_Map_Load,
+        On_Map_Enter,
+        Dialogue_Tree_Response,
+        Dialogue_Tree_Choice,
+        Dialogue_Tree_End,        
+        Start_Of_Mid_Combat_Lines,
+        Mid_Combat_Line,
+        End_Of_Mid_Combat_Line
     }
 
     //DIRE WARNING: DO NOT MESS WITH THESE TAGS UNLESS YOU ARE ADDING A NEW EVENT TO THE SYSTEM! DELETING AN EVENT COULD HAVE
