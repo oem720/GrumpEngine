@@ -28,7 +28,7 @@ namespace GrumpMapEditor
                 for (int i = 0; i < buttonGrid.GetLength(0); i++)
                     for (int j = 0; j < buttonGrid.GetLength(1); j++)
                     {
-                        string test = buttonGrid.GetButton(i, j).Button.Text;
+                        string test = (string)buttonGrid.GetButton(i, j).Button.Tag;
                         if (j == buttonGrid.GetLength(1) - 1 && int.TryParse(test, out int result) && result > 0)
                         {
                             dataExists = true;
@@ -75,7 +75,7 @@ namespace GrumpMapEditor
                 for (int i = 0; i < buttonGrid.GetLength(0); i++)
                     for (int j = 0; j < buttonGrid.GetLength(1); j++)
                     {
-                        string test = buttonGrid.GetButton(i, j).Button.Text;
+                        string test =(string) buttonGrid.GetButton(i, j).Button.Tag;
                         if (i == buttonGrid.GetLength(0) - 1 && int.TryParse(test, out int result) && result > 0)
                         {
                             dataExists = true;

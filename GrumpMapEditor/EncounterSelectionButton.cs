@@ -25,11 +25,11 @@ namespace GrumpMapEditor
 
             if(internTile != null)
             {
-                internButton.Text = internTile.OutwardValue.ToString();
+                internButton.Tag = internTile.OutwardValue.ToString();
             }
             else
             {
-                internButton.Text = "-1";
+                internButton.Tag = "-1";
             }
 
             args = new ReturnedTileValueEventArgs { EditedTile = internTile };
@@ -58,8 +58,8 @@ namespace GrumpMapEditor
         public void EncounterEditor_Closing(object sender, FormClosingEventArgs e)
         {
             mEE.EditorClosing(sender, args);
-            internButton.Text = args.EditedTile.OutwardValue.ToString();
-            if (internButton.Text != "0")
+            internButton.Tag = args.EditedTile.OutwardValue.ToString();
+            if (internButton.Tag != "0")
                 internButton.BackColor = System.Drawing.Color.AntiqueWhite;
         }
 

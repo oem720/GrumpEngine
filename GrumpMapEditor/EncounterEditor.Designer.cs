@@ -43,6 +43,7 @@
             this.entityAdderButton = new System.Windows.Forms.Button();
             this.entityTypeSelectorLabel = new System.Windows.Forms.Label();
             this.entityParameterText = new System.Windows.Forms.Label();
+            this.Properties = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // descriptorTagSelector
@@ -190,12 +191,22 @@
             this.entityParameterText.TabIndex = 15;
             this.entityParameterText.Text = "Entity Parameters";
             // 
+            // Properties
+            // 
+            this.Properties.Location = new System.Drawing.Point(338, 252);
+            this.Properties.Name = "Properties";
+            this.Properties.Size = new System.Drawing.Size(318, 40);
+            this.Properties.TabIndex = 16;
+            this.Properties.Text = "Properties";
+            this.Properties.UseVisualStyleBackColor = true;
+            // 
             // EncounterEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(669, 481);
+            this.Controls.Add(this.Properties);
             this.Controls.Add(this.entityParameterText);
             this.Controls.Add(this.entityTypeSelectorLabel);
             this.Controls.Add(this.entityAdderButton);
@@ -238,5 +249,6 @@
         private System.Windows.Forms.Button entityAdderButton;
         private System.Windows.Forms.Label entityTypeSelectorLabel;
         private System.Windows.Forms.Label entityParameterText;
+        private System.Windows.Forms.Button Properties;
     }
 }
