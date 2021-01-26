@@ -13,5 +13,13 @@ namespace GrumpEngine
         //Member Auto-props
         public float ArmorResistanceCoefficient { get; private set; }
         public string Description { get; private set; }
+
+        public Armor (float weight, string identifier, float armorCoef, string desc)
+        {
+            Weight = weight;
+            Identifier = identifier;
+            ArmorResistanceCoefficient = armorCoef;
+            Description = desc;
+        }
     }
 }
