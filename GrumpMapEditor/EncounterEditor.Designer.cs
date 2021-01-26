@@ -30,7 +30,6 @@
         {
             this.descriptorTagSelector = new System.Windows.Forms.ComboBox();
             this.outputConsole = new System.Windows.Forms.TextBox();
-            this.storedValuesDisplayBox = new System.Windows.Forms.TextBox();
             this.outputLabel = new System.Windows.Forms.Label();
             this.displayEncounterReg = new System.Windows.Forms.Label();
             this.submitChangeButton = new System.Windows.Forms.Button();
@@ -43,7 +42,8 @@
             this.entityAdderButton = new System.Windows.Forms.Button();
             this.entityTypeSelectorLabel = new System.Windows.Forms.Label();
             this.entityParameterText = new System.Windows.Forms.Label();
-            this.Properties = new System.Windows.Forms.Button();
+            this.properties = new System.Windows.Forms.Button();
+            this.storedValuesDisplayBox = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // descriptorTagSelector
@@ -66,17 +66,6 @@
             this.outputConsole.ReadOnly = true;
             this.outputConsole.Size = new System.Drawing.Size(320, 219);
             this.outputConsole.TabIndex = 1;
-            // 
-            // storedValuesDisplayBox
-            // 
-            this.storedValuesDisplayBox.Cursor = System.Windows.Forms.Cursors.No;
-            this.storedValuesDisplayBox.Location = new System.Drawing.Point(338, 27);
-            this.storedValuesDisplayBox.Multiline = true;
-            this.storedValuesDisplayBox.Name = "storedValuesDisplayBox";
-            this.storedValuesDisplayBox.ReadOnly = true;
-            this.storedValuesDisplayBox.Size = new System.Drawing.Size(319, 219);
-            this.storedValuesDisplayBox.TabIndex = 2;
-            this.storedValuesDisplayBox.TextChanged += new System.EventHandler(this.storedValuesDisplayBox_TextChanged);
             // 
             // outputLabel
             // 
@@ -191,14 +180,22 @@
             this.entityParameterText.TabIndex = 15;
             this.entityParameterText.Text = "Entity Parameters";
             // 
-            // Properties
+            // properties
             // 
-            this.Properties.Location = new System.Drawing.Point(338, 252);
-            this.Properties.Name = "Properties";
-            this.Properties.Size = new System.Drawing.Size(318, 40);
-            this.Properties.TabIndex = 16;
-            this.Properties.Text = "Properties";
-            this.Properties.UseVisualStyleBackColor = true;
+            this.properties.Location = new System.Drawing.Point(338, 252);
+            this.properties.Name = "properties";
+            this.properties.Size = new System.Drawing.Size(318, 40);
+            this.properties.TabIndex = 16;
+            this.properties.Text = "Properties";
+            this.properties.UseVisualStyleBackColor = true;
+            this.properties.Click += new System.EventHandler(this.PropertyButtonClick);
+            // 
+            // storedValuesDisplayBox
+            // 
+            this.storedValuesDisplayBox.Location = new System.Drawing.Point(339, 27);
+            this.storedValuesDisplayBox.Name = "storedValuesDisplayBox";
+            this.storedValuesDisplayBox.Size = new System.Drawing.Size(317, 218);
+            this.storedValuesDisplayBox.TabIndex = 17;
             // 
             // EncounterEditor
             // 
@@ -206,7 +203,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(669, 481);
-            this.Controls.Add(this.Properties);
+            this.Controls.Add(this.storedValuesDisplayBox);
+            this.Controls.Add(this.properties);
             this.Controls.Add(this.entityParameterText);
             this.Controls.Add(this.entityTypeSelectorLabel);
             this.Controls.Add(this.entityAdderButton);
@@ -219,7 +217,6 @@
             this.Controls.Add(this.submitChangeButton);
             this.Controls.Add(this.displayEncounterReg);
             this.Controls.Add(this.outputLabel);
-            this.Controls.Add(this.storedValuesDisplayBox);
             this.Controls.Add(this.outputConsole);
             this.Controls.Add(this.descriptorTagSelector);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -236,7 +233,6 @@
 
         private System.Windows.Forms.ComboBox descriptorTagSelector;
         private System.Windows.Forms.TextBox outputConsole;
-        private System.Windows.Forms.TextBox storedValuesDisplayBox;
         private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.Label displayEncounterReg;
         private System.Windows.Forms.Button submitChangeButton;
@@ -249,6 +245,7 @@
         private System.Windows.Forms.Button entityAdderButton;
         private System.Windows.Forms.Label entityTypeSelectorLabel;
         private System.Windows.Forms.Label entityParameterText;
-        private System.Windows.Forms.Button Properties;
+        private System.Windows.Forms.Button properties;
+        private System.Windows.Forms.TreeView storedValuesDisplayBox;
     }
 }

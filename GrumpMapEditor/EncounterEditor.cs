@@ -10,7 +10,8 @@ namespace GrumpMapEditor
         Tag _tag;
         string _desc;
         EncounterSelectionButton _esb;
-
+        PropertiesUI property = new PropertiesUI();
+        TreeNode descriptorStringNode = new TreeNode();
 
         public EncounterEditor(EncounterSelectionButton esb)
         {
@@ -26,6 +27,12 @@ namespace GrumpMapEditor
                 descriptorTagSelector.Items.Add((Tag)i);
             }            
             descriptorTagSelector.DropDownWidth = FindGreatestLength(descriptorTagSelector);
+            descriptorStringNode.Text = "Descriptor Strings";
+            storedValuesDisplayBox.Nodes.Add(descriptorStringNode);
+            foreach (DescriptorString ds in internEncounterType.Descriptors)
+            {
+                AddToTreeNode(ds.Tag.ToString(), ds.Descriptor);
+            }
         }
 
         private int FindGreatestLength(object sender)
@@ -69,21 +76,7 @@ namespace GrumpMapEditor
                 outputConsole.AppendText("Descriptor adding successful!");
                 outputConsole.AppendText(Environment.NewLine);
                 storedValuesDisplayBox.Text = "";
-
-                storedValuesDisplayBox.AppendText($"Current Outward value -- {internEncounterType.OutwardValue}");
-                storedValuesDisplayBox.AppendText(Environment.NewLine);
-
-                foreach (DescriptorString ds in internEncounterType.Descriptors)
-                {
-                    storedValuesDisplayBox.AppendText($"{ds.Tag} -- {ds.Descriptor}");
-                    storedValuesDisplayBox.AppendText(Environment.NewLine);
-                }
-
-                foreach (IEntity ent in internEncounterType.EntityRegistry)
-                {
-                    storedValuesDisplayBox.AppendText($"{ent}");
-                    storedValuesDisplayBox.AppendText(Environment.NewLine);
-                }
+                AddToTreeNode(_tag.ToString(), _desc);
                 return;
             }
             outputConsole.AppendText("Failed to add descriptor!");
@@ -109,6 +102,31 @@ namespace GrumpMapEditor
         private void storedValuesDisplayBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PropertyButtonClick(object sender, EventArgs e)
+        {
+            property.Show();
+        }
+
+        public void AddToTreeNode(string tag, string descriptor)
+        {
+            bool found = false;
+            foreach (TreeNode node in descriptorStringNode.Nodes)
+                if (node.Text.Equals(tag))
+                    found = true;
+            if (!found)
+            {
+                TreeNode newTagNode = new TreeNode();
+                newTagNode.Text = tag;
+                descriptorStringNode.Nodes.Add(newTagNode);
+            }
+            TreeNode newNode = new TreeNode();
+            newNode.Text = descriptor;
+            foreach (TreeNode node in descriptorStringNode.Nodes)
+                if (node.Text.Equals(_tag.ToString()))
+                    node.Nodes.Add(newNode);
+            storedValuesDisplayBox.Update();
         }
     }
 }
