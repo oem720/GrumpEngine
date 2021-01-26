@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using GrumpEngine;
 
@@ -25,8 +27,13 @@ namespace GrumpMapEditor
             for (int i = 100; i <= 105; i++)
             {
                 descriptorTagSelector.Items.Add((Tag)i);
-            }            
+            }
+            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => typeof(IEntity).IsAssignableFrom(p));
+            foreach (Type newType in types)
+                if (!newType.Equals(typeof(IEntity)) && !newType.Equals(typeof(ICharacter)))
+                    entityTypeSelector.Items.Add(newType.Name);
             descriptorTagSelector.DropDownWidth = FindGreatestLength(descriptorTagSelector);
+            entityTypeSelector.DropDownWidth = FindGreatestLength(entityTypeSelector);
             descriptorStringNode.Text = "Descriptor Strings";
             storedValuesDisplayBox.Nodes.Add(descriptorStringNode);
             for(int i = 0; i < internEncounterType.Descriptors.Count; i++)
@@ -38,7 +45,7 @@ namespace GrumpMapEditor
         private int FindGreatestLength(object sender)
         {
             int newWidth = (int)descriptorTagSelector.CreateGraphics().MeasureString(((ComboBox)sender).Items[0].ToString(), descriptorTagSelector.Font).Width;
-            foreach (Tag s in ((ComboBox)sender).Items)
+            foreach (var s in ((ComboBox)sender).Items)
             {
                 if (newWidth < (int)descriptorTagSelector.CreateGraphics().MeasureString(s.ToString(), descriptorTagSelector.Font).Width)
                 {
@@ -128,5 +135,37 @@ namespace GrumpMapEditor
                     node.Nodes.Add(newNode);
             storedValuesDisplayBox.Update();
         }
+
+        private void displayEncounterReg_Click(object sender, EventArgs e)
+        {
+
+        }
+        //public void AddToTreeNode(Object o)
+        //{
+        //    bool found = false;
+        //    foreach (TreeNode node in descriptorStringNode.Nodes)
+        //        if (node.Text.Equals(o.GetType()))
+        //            found = true;
+        //    if (!found)
+        //    {
+        //        TreeNode newTagNode = new TreeNode();
+        //        newTagNode.Text = ds.Tag.ToString();
+        //        descriptorStringNode.Nodes.Add(newTagNode);
+        //    }
+        //    TreeNode newNode = new TreeNode();
+        //    newNode.Text = o;
+        //    foreach (TreeNode node in descriptorStringNode.Nodes)
+        //        if (node.Text.Equals(ds.Tag.ToString()))
+        //            node.Nodes.Add(newNode);
+        //    storedValuesDisplayBox.Update();
+
+        //    PropertyInfo[] myPropertyInfo;
+        //    myPropertyInfo = Type.GetType("System.Type").GetProperties();
+        //    Console.WriteLine("Properties of System.Type are:");
+        //    for (int i = 0; i < myPropertyInfo.Length; i++)
+        //    {
+        //        Console.WriteLine(myPropertyInfo[i].ToString());
+        //    }
+        //}
     }
 }
