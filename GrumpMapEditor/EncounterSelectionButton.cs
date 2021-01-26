@@ -59,6 +59,8 @@ namespace GrumpMapEditor
         {
             mEE.EditorClosing(sender, args);
             internButton.Text = args.EditedTile.OutwardValue.ToString();
+            if (internButton.Text != "0")
+                internButton.BackColor = System.Drawing.Color.AntiqueWhite;
         }
 
         public EncounterEditor EditorUserInterface
