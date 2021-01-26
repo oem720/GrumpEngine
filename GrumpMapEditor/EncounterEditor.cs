@@ -21,9 +21,9 @@ namespace GrumpMapEditor
 
         private void Editor_Load(object sender, EventArgs e)
         {
-            foreach(var item in Enum.GetValues(typeof(Tag)))
+            for (int i = 100; i <= 105; i++)
             {
-                descriptorTagSelector.Items.Add(item);
+                descriptorTagSelector.Items.Add((Tag)i);
             }            
             descriptorTagSelector.DropDownWidth = FindGreatestLength(descriptorTagSelector);
         }
