@@ -16,7 +16,7 @@ namespace GrumpMapEditor
 
         private void TopLevelUI_Load(object sender, EventArgs e)
         {
-            buttonGrid = new Grid(edit.Map, new Point(12, 12), 452, 426, 5, 5);
+            buttonGrid = new Grid(edit.Map, new Point(12, 12), 452, 426);
             ReAddControls();
         }
 

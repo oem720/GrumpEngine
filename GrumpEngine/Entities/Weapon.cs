@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class Weapon : IEntity
     {
         //Implement required IEntity Auto-Props

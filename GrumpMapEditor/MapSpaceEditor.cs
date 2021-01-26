@@ -13,10 +13,10 @@ namespace GrumpMapEditor
 
         public void WriteToSystem(string filepath)
         {
-            using(StreamWriter sw = new StreamWriter(filepath))
+            using(FileStream fs = File.Create(filepath))
             {
                 MapSerializer ms = new MapSerializer();
-                sw.Write(ms.Serialize(Map));
+                ms.Serialize(fs, Map);
             }
         }
 

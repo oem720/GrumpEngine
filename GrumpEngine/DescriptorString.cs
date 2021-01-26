@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class DescriptorString
     {
         public DescriptorString(string desc, Tag tag)

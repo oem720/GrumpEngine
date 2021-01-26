@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GrumpEngine.Serializer
 {
     public static class MapDeserializer
     {
-        public static string Deserialize(string input)
+        public static Map Deserialize(FileStream fs)
         {
-            string[] split = input.Split('-');
-            byte[] raw = new byte[split.Length];
-            for(int i = 0; i < split.Length; i++)
-            {
-                raw[i] = Convert.ToByte(split[i], 16);
-            }
-            return Encoding.ASCII.GetString(raw);
+            BinaryFormatter bf = new BinaryFormatter();
+            return (Map)bf.Deserialize(fs);
         }
     }
 }

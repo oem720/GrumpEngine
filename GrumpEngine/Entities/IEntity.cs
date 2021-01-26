@@ -1,4 +1,6 @@
-﻿namespace GrumpEngine
+﻿using System;
+
+namespace GrumpEngine
 {
     public interface IEntity
     {

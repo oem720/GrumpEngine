@@ -1,5 +1,8 @@
-﻿namespace GrumpEngine
+﻿using System;
+
+namespace GrumpEngine
 {
+    [Serializable]
     public class Armor : IEntity
     {
         //Implement required IEntity Auto-props

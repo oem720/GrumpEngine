@@ -1,5 +1,8 @@
-﻿namespace GrumpEngine
+﻿using System;
+
+namespace GrumpEngine
 {
+    [Serializable]
     public class Map
     {
         public ResizeableMatrix<Tile> MapGrid { get; private set; }

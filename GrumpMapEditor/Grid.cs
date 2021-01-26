@@ -14,9 +14,9 @@ namespace GrumpMapEditor
         Point loc;
         readonly int length, height;
 
-        public Grid(Map map, Point startLoc, int length, int height, int numRows, int numCols)  
+        public Grid(Map map, Point startLoc, int length, int height)  
         {
-            grid = new ResizeableMatrix<EncounterSelectionButton>(numRows, numCols);
+            grid = new ResizeableMatrix<EncounterSelectionButton>(map.MapGrid.Rows, map.MapGrid.Cols);
             mMap = map;
             loc = startLoc;
             this.length = length;

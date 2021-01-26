@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class ResizeableMatrix<T>
     {
         /// <summary>
@@ -11,9 +13,9 @@ namespace GrumpEngine
         /// <param name="col"></param>
         public ResizeableMatrix(int row, int col)
         {
-            Matrix = new T[row, col];
             Rows = row;
             Cols = col;
+            Matrix = new T[Rows, Cols];
         }
 
         /// <summary>

@@ -1,5 +1,8 @@
-﻿namespace GrumpEngine
+﻿using System;
+
+namespace GrumpEngine
 {
+    [Serializable]
     public class Player : ICharacter
     {
         //implement the required properties for ICharacter

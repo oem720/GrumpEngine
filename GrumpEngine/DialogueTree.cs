@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class DialogueTree
     {
         private List<DescriptorString> _dialogue;

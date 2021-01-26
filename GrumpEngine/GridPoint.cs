@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class GridPoint
     {
         public GridPoint(int x, int y)

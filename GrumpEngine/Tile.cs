@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrumpEngine
 {
+    [Serializable]
     public class Tile
     {
         public void AddDescriptorString(DescriptorString entry)
