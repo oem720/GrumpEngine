@@ -111,6 +111,7 @@ namespace GrumpMapEditor
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
                     grid[i, j].Button.Width = buttonWidth;
+                    grid[i, j].Button.Text = $"({i}, {j})";
                     grid[i, j].Button.Height = buttonHeight;
                     grid[i, j].Button.Location = new Point(loc.X + (j * SPACING_VALUE) + (j * buttonWidth),
                         loc.Y + (i * SPACING_VALUE) + (i * buttonHeight));
