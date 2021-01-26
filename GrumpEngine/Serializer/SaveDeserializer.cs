@@ -285,16 +285,16 @@ namespace GrumpEngine.Serializer
                         }
                         else
                             if (nestedCollectionCount == 1)
-                        {
-                            isInNestedCollection = false;
-                            nestedCollectionCount--;
-                            continue;
-                        }
-                        else
-                        {
-                            nestedCollectionCount--;
-                            continue;
-                        }
+                            {
+                                isInNestedCollection = false;
+                                nestedCollectionCount--;
+                                continue;
+                            }
+                            else
+                            {
+                                nestedCollectionCount--;
+                                continue;
+                            }
                     else if (isInStringDelim || isInNestedCollection)
                         continue;
                 }

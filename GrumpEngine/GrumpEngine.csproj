@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DialogueTree.cs" />
     <Compile Include="Entities\Armor.cs" />
+    <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\ICharacter.cs" />
     <Compile Include="DescriptorString.cs" />
     <Compile Include="Entities\EntityTemplate.cs" />

@@ -14,9 +14,8 @@ namespace GrumpMapEditor
         public void WriteToSystem(string filepath)
         {
             using(FileStream fs = File.Create(filepath))
-            {
-                MapSerializer ms = new MapSerializer();
-                ms.Serialize(fs, Map);
+            { 
+                MapSerializer.Serialize(fs, Map);
             }
         }
 

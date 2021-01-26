@@ -29,9 +29,9 @@ namespace GrumpMapEditor
             descriptorTagSelector.DropDownWidth = FindGreatestLength(descriptorTagSelector);
             descriptorStringNode.Text = "Descriptor Strings";
             storedValuesDisplayBox.Nodes.Add(descriptorStringNode);
-            foreach (DescriptorString ds in internEncounterType.Descriptors)
+            for(int i = 0; i < internEncounterType.Descriptors.Count; i++)
             {
-                AddToTreeNode(ds.Tag.ToString(), ds.Descriptor);
+                AddToTreeNode(internEncounterType.RequestString(i));
             }
         }
 
@@ -76,7 +76,7 @@ namespace GrumpMapEditor
                 outputConsole.AppendText("Descriptor adding successful!");
                 outputConsole.AppendText(Environment.NewLine);
                 storedValuesDisplayBox.Text = "";
-                AddToTreeNode(_tag.ToString(), _desc);
+                AddToTreeNode(new DescriptorString(_desc, _tag));
                 return;
             }
             outputConsole.AppendText("Failed to add descriptor!");
@@ -109,22 +109,22 @@ namespace GrumpMapEditor
             property.Show();
         }
 
-        public void AddToTreeNode(string tag, string descriptor)
+        public void AddToTreeNode(DescriptorString ds)
         {
             bool found = false;
             foreach (TreeNode node in descriptorStringNode.Nodes)
-                if (node.Text.Equals(tag))
+                if (node.Text.Equals(ds.Tag.ToString()))
                     found = true;
             if (!found)
             {
                 TreeNode newTagNode = new TreeNode();
-                newTagNode.Text = tag;
+                newTagNode.Text = ds.Tag.ToString();
                 descriptorStringNode.Nodes.Add(newTagNode);
             }
             TreeNode newNode = new TreeNode();
-            newNode.Text = descriptor;
+            newNode.Text = ds.Descriptor;
             foreach (TreeNode node in descriptorStringNode.Nodes)
-                if (node.Text.Equals(_tag.ToString()))
+                if (node.Text.Equals(ds.Tag.ToString()))
                     node.Nodes.Add(newNode);
             storedValuesDisplayBox.Update();
         }

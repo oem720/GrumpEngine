@@ -44,9 +44,10 @@ namespace GrumpEngine
         Dialogue_Tree_Response,
         Dialogue_Tree_Choice,
         Dialogue_Tree_End,        
-        Start_Of_Mid_Combat_Lines,
+        Combat_Start_Line,
+        Enemy_Death_Line,
+        Enemy_Player_Killed_Line,
         Mid_Combat_Line,
-        End_Of_Mid_Combat_Line
     }
 
     //DIRE WARNING: DO NOT MESS WITH THESE TAGS UNLESS YOU ARE ADDING A NEW EVENT TO THE SYSTEM! DELETING AN EVENT COULD HAVE
