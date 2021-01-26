@@ -26,6 +26,7 @@ namespace GrumpEngine
         public PlayerClass Class { get; set; }
         public GridPoint CurrentPosition { get; private set; }
         public int RequiredXPToLevel { get; set; } = 100;
+        public int Gold { get; set; }
 
         public Player(GridPoint pos, string name = "Player")
         {

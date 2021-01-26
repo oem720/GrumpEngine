@@ -10,7 +10,7 @@ namespace GrumpEngine
     public class Enemy : ICharacter
     {
         //implement the required properties for ICharacter
-        public int Health { get; private set; }
+        public int Health { get; set; }
         public float DamageResistance { get; private set; }
         public int Level { get; private set; }
         public DialogueTree Dialogue { get; private set; }
@@ -27,35 +27,67 @@ namespace GrumpEngine
         //Member auto-props
         public string Name { get; private set; }
         public string InspectLine { get; private set; }
-        public bool CanUseHealingItem { get; set; } = false;
+        public bool CanUseHealingItem { get; set; }
         public bool IsBoss { get; private set; }
-        public DescriptorString[] MidCombatLines { get; private set; }
+        public bool IsEscapable { get; set; }
+        public int XPReward { get; private set; }
+        public int GoldReward { get; private set; }
+        public List<DescriptorString> MidCombatLines { get; private set; }
+        public List<DescriptorString> PlayerDeathResponses { get; private set; }
         public DescriptorString CombatStartLine { get; private set; }
+        public DescriptorString EnemyDeathLine { get; private set; }
 
-        public Enemy(string name, string inspectLine, int health, int level, float dmgresist, Weapon usedwep, Armor usedarmor, bool isTalkable = false, DialogueTree dt = null, bool canheal = false, bool isboss = false)
-        {
-            Health = health;
-            Level = level;
-            DamageResistance = dmgresist;
-            CurrentEquippedArmor = usedarmor;
-            CurrentEquippedWeapon = usedwep;
-            IsTalkable = isTalkable;
-            Dialogue = dt;
-            Name = name;
-            InspectLine = inspectLine;
-            CanUseHealingItem = canheal;
-            IsBoss = isboss;
-        }
-
-        public void AddMidCombatLines(List<DescriptorString> listds)
-        {
-            MidCombatLines = listds.ToArray();
-        }
+        //Member fields
+        private Random _ran = new Random();
 
         public DescriptorString RequestRandomCombatLine()
         {
-            Random ran = new Random();
-            return MidCombatLines[ran.Next(0, MidCombatLines.Length)];
+            return MidCombatLines[_ran.Next(0, MidCombatLines.Count)];
+        }
+
+        public DescriptorString RequestRandomDeathResponseLine()
+        {
+            return PlayerDeathResponses[_ran.Next(0, PlayerDeathResponses.Count)];
+        }
+
+        public bool AddMidCombatLine(DescriptorString ds)
+        {
+            if (ds.Tag.Equals(Tag.Mid_Combat_Line))
+            {
+                MidCombatLines.Add(ds);
+                return true;
+            }
+            return false;
+        }
+
+        public bool SetCombatStartLine(DescriptorString ds)
+        {
+            if (ds.Tag.Equals(Tag.Combat_Start_Line))
+            {
+                CombatStartLine = ds;
+                return true;
+            }
+            return false;
+        }
+
+        public bool SetEnemyDeathLine(DescriptorString ds)
+        {
+            if (ds.Tag.Equals(Tag.Enemy_Death_Line))
+            {
+                EnemyDeathLine = ds;
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddPlayerDeathResponse(DescriptorString ds)
+        {
+            if (ds.Tag.Equals(Tag.Enemy_Player_Killed_Line))
+            {
+                PlayerDeathResponses.Add(ds);
+                return true;
+            }
+            return false;
         }
     }
 }
