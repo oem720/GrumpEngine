@@ -19,15 +19,5 @@ namespace GrumpEngine
         public float ArmorPenetrationCoefficient { get; private set; }
         public string Description { get; private set; }
         public WeaponType WeaponType { get; private set; }
-
-        public Weapon(float weight, string identifier, int damage, float armorPenetration, string description, WeaponType type)
-        {
-            Weight = weight;
-            Identifier = identifier;
-            Damage = damage;
-            ArmorPenetrationCoefficient = armorPenetration;
-            Description = description;
-            WeaponType = type;
-        }
     }
 }
