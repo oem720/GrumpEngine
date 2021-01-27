@@ -1,4 +1,7 @@
-﻿namespace GrumpEngine
+﻿using System;
+using System.Collections.Generic;
+
+namespace GrumpEngine
 {
     public static class Factory
     {
@@ -12,12 +15,6 @@
         {
             return new DescriptorString(desc, tag);
         }
-
-        public static Player ConstructPlayer(GridPoint pos, string name)
-        {
-            return new Player(pos, name);
-        }
-
         public static Weapon ConstructWeapon(float weight, string identifier, int damage, float armorPenetration, string description, WeaponType type)
         {
             return new Weapon(weight, identifier, damage, armorPenetration, description, type);
@@ -46,6 +43,16 @@
         public static Armor ConstructArmor(float weight, string identifier, float armorCoef, string desc)
         {
             return new Armor(weight, identifier, armorCoef, desc);
+        }
+
+        public static Dictionary<PlayerStat, int> GenerateStats()
+        {
+            Dictionary<PlayerStat, int> dict = new Dictionary<PlayerStat, int>();
+            foreach(PlayerStat item in Enum.GetValues(typeof(PlayerStat)))
+            {
+                dict.Add(item, 0);
+            }
+            return dict;
         }
     }
 }

@@ -16,8 +16,40 @@ namespace GrumpEngine
     //TODO Add your custom Player Classes here!
     public enum PlayerClass
     {
-        Mage,//example player classes, these do not have to be kept
-        Barbarian
+        Delta,
+        Alpha_Delta,
+        Phi,
+        Alpha_Phi,
+        Sigma,
+        Alpha_Sigma,
+        Epsilon,
+        Alpha_Epsilon,
+        Gamma,
+        Alpha_Gamma,
+        Theta,
+        Alpha_Theta,
+        Tau,
+        Alpha_Tau
+    }
+
+    //Define stats the Player is able to have. Change these all you like.
+    public enum PlayerStat
+    {
+        Defense,
+        Engineering,
+        Ingenuity,
+        Power,
+        Hardiness,
+        Stealth,
+        Speech,
+        Sight,
+        Throwables,
+        Swords,
+        Misc_Melee,
+        Sniper_Rifles,
+        Explosives,
+        Small_Arms,
+        Heavy_Arms
     }
 
     //The 4 directions the player is able to move.
@@ -29,6 +61,14 @@ namespace GrumpEngine
         South,
         East,
         West
+    }
+
+    //These are types of interactions items can have. You can change these, provided you know what you're doing
+    public enum InteractionType
+    {
+        HealPlayer,
+        BoostPlayerStat,
+        UsedInPuzzle
     }
 
     //Do not change under any circumstances! Valuable data required for the function of all Text and Text Based Systems
@@ -75,6 +115,8 @@ namespace GrumpEngine
         On_Armor_Equipped,
         On_Weapon_Unequipped,
         On_Armor_Unequipped,
+        On_Support_Item_Equipped,
+        On_Support_Item_Unequipped,
         On_Game_Start,
         On_Game_Close,
         On_Dialogue_Option_Selected,

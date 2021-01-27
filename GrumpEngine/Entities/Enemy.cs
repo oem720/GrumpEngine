@@ -14,8 +14,8 @@ namespace GrumpEngine
         public float DamageResistance { get; private set; }
         public int Level { get; private set; }
         public DialogueTree Dialogue { get; private set; }
-        public bool IsTalkable { get; private set; }
-        public Inventory Inv { get; private set; } = Factory.ConstructInventory(25);
+        public bool IsTalkable { get; set; }
+        public Inventory Inv { get; set; }
         public Weapon CurrentEquippedWeapon { get; private set; }
         public Armor CurrentEquippedArmor { get; private set; }
 
@@ -32,13 +32,30 @@ namespace GrumpEngine
         public bool IsEscapable { get; set; }
         public int XPReward { get; private set; }
         public int GoldReward { get; private set; }
-        public List<DescriptorString> MidCombatLines { get; private set; }
-        public List<DescriptorString> PlayerDeathResponses { get; private set; }
+        public List<DescriptorString> MidCombatLines { get; private set; } = new List<DescriptorString>();
+        public List<DescriptorString> PlayerDeathResponses { get; private set; } = new List<DescriptorString>();
         public DescriptorString CombatStartLine { get; private set; }
         public DescriptorString EnemyDeathLine { get; private set; }
 
         //Member fields
         private Random _ran = new Random();
+
+        public Enemy(string name, string inspectline, int health, float dmgresist, int level, int xpreward, int goldreward, Weapon curwep, Armor curarm, bool isboss = false, bool canheal = false, bool isescape = true, bool istalkable = false)
+        {
+            Name = name;
+            InspectLine = inspectline;
+            Health = health;
+            DamageResistance = dmgresist;
+            Level = level;
+            XPReward = xpreward;
+            GoldReward = goldreward;
+            CurrentEquippedArmor = curarm;
+            CurrentEquippedWeapon = curwep;
+            IsBoss = isboss;
+            CanUseHealingItem = canheal;
+            IsEscapable = isescape;
+            IsTalkable = istalkable;
+        }
 
         public DescriptorString RequestRandomCombatLine()
         {
@@ -88,6 +105,11 @@ namespace GrumpEngine
                 return true;
             }
             return false;
+        }
+
+        public void AddItemToInventory(IEntity item)
+        {
+            Inv.AddItem(item);
         }
     }
 }

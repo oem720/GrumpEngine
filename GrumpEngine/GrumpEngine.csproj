@@ -50,16 +50,24 @@
   <ItemGroup>
     <Compile Include="DialogueTree.cs" />
     <Compile Include="Entities\Armor.cs" />
+    <Compile Include="Entities\AssistItem.cs" />
+    <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Entities\EnvironmentInteractableItem.cs" />
+    <Compile Include="Entities\GenericItem.cs" />
     <Compile Include="Entities\ICharacter.cs" />
     <Compile Include="DescriptorString.cs" />
     <Compile Include="Entities\EntityTemplate.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\IItem.cs" />
+    <Compile Include="Entities\Merchant.cs" />
     <Compile Include="Entities\NPC.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\UseableItem.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="EventCoordinator.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Serializer\MapDeserializer.cs" />
     <Compile Include="Serializer\MapSerializer.cs" />
     <Compile Include="Serializer\SaveDeserializer.cs" />

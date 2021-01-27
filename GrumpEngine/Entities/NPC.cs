@@ -21,7 +21,7 @@ namespace GrumpEngine
 
         //implement the required properties for IEntity
         public float Weight { get; private set; } = 0.0f;
-        public string Identifier { get; private set; } = "Enemy";
+        public string Identifier { get; private set; } = "GenericNPC";
         public bool IsGrabbable { get; set; } = false;
 
         public void AddDialogue(DescriptorString ds)

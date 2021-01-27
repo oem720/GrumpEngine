@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GrumpEngine
 {
@@ -27,11 +28,16 @@ namespace GrumpEngine
         public GridPoint CurrentPosition { get; private set; }
         public int RequiredXPToLevel { get; set; } = 100;
         public int Gold { get; set; }
+        public AssistItem CurrentEquippedAssistItem { get; private set; }
+        public int MaxHealth { get; set; }
+        public Dictionary<PlayerStat, int> Stats { get; set; } = Factory.GenerateStats();
 
-        public Player(GridPoint pos, string name = "Player")
+        public Player(GridPoint pos, int maxhealth, string name = "Player")
         {
             Name = name;
             CurrentPosition = pos;
+            MaxHealth = maxhealth;
+            Health = MaxHealth;
             RequiredXPToLevel = 100;
         }
 
@@ -60,6 +66,24 @@ namespace GrumpEngine
             }
             
             return isLeveledUp;
+        }
+
+        public void Heal(int val)
+        {
+            if(val < 0)
+            {
+                Health += val;
+                EventCoordinator.RaiseEvent(this, EventHandle.On_Player_Hit);
+            }
+            else
+            {
+                int diff = MaxHealth - Health;
+                if (val > diff)
+                    Health = MaxHealth;
+                else
+                    Health += val;
+                EventCoordinator.RaiseEvent(this, EventHandle.On_Player_Healed);
+            }
         }
 
         /// <summary>
@@ -124,7 +148,7 @@ namespace GrumpEngine
         public void EquipArmor(Armor arm)
         {
             if (CurrentEquippedArmor != null)
-                Inv.AddItem(CurrentEquippedArmor);
+                UnequipCurrentArmor();
 
             CurrentEquippedArmor = arm;
             Inv.RemoveItem(arm);
@@ -136,6 +160,25 @@ namespace GrumpEngine
             Inv.AddItem(CurrentEquippedArmor);
             CurrentEquippedArmor = null;
             EventCoordinator.RaiseEvent(this, EventHandle.On_Armor_Unequipped);
+        }
+
+        public void EquipAssistItem(AssistItem ai)
+        {
+            if (CurrentEquippedAssistItem != null)
+                UnequipAssistItem();
+
+            CurrentEquippedAssistItem = ai;
+            Stats[CurrentEquippedAssistItem.Bonus.Key] += CurrentEquippedAssistItem.Bonus.Value;
+            Inv.RemoveItem(ai);
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Support_Item_Equipped);
+        }
+
+        public void UnequipAssistItem()
+        {
+            Stats[CurrentEquippedAssistItem.Bonus.Key] -= CurrentEquippedAssistItem.Bonus.Value;
+            Inv.AddItem(CurrentEquippedAssistItem);
+            CurrentEquippedAssistItem = null;
+            EventCoordinator.RaiseEvent(this, EventHandle.On_Support_Item_Unequipped);
         }
     }
 }

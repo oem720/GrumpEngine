@@ -137,6 +137,16 @@ namespace GrumpEngine
 
         }
 
+        private static void On_Support_Item_Equipped(object sender, EventArgs e)
+        {
+
+        }
+
+        private static void On_Support_Item_Unequipped(object sender, EventArgs e)
+        {
+
+        }
+
         private static void On_Game_Start(object sender, EventArgs e)
         {
 

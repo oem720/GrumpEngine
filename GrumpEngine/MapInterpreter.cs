@@ -10,6 +10,13 @@ namespace GrumpEngine
 {
     public static class MapInterpreter
     {
-        
+        private static Map _focusmap;
+
+        public static void TransitionLevel(string filepath, GridPoint transitionpoint)
+        {
+
+
+            EventCoordinator.RaiseEvent(_focusmap, EventHandle.On_Map_Load);
+        }
     }
 }
