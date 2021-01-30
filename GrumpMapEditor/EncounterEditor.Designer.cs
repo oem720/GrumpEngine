@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.descriptorTagSelector = new System.Windows.Forms.ComboBox();
             this.outputConsole = new System.Windows.Forms.TextBox();
             this.outputLabel = new System.Windows.Forms.Label();
@@ -40,14 +41,31 @@
             this.entityTypeSelector = new System.Windows.Forms.ComboBox();
             this.entityParameterEntry = new System.Windows.Forms.TextBox();
             this.entityAdderButton = new System.Windows.Forms.Button();
-            this.entityTypeSelectorLabel = new System.Windows.Forms.Label();
             this.entityParameterText = new System.Windows.Forms.Label();
             this.storedValuesDisplayBox = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip5 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.contextMenuStrip6 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.contextMenuStrip5.SuspendLayout();
+            this.contextMenuStrip6.SuspendLayout();
             this.SuspendLayout();
             // 
             // descriptorTagSelector
@@ -59,6 +77,7 @@
             this.descriptorTagSelector.Name = "descriptorTagSelector";
             this.descriptorTagSelector.Size = new System.Drawing.Size(121, 21);
             this.descriptorTagSelector.TabIndex = 0;
+            this.descriptorTagSelector.SelectedIndexChanged += new System.EventHandler(this.descriptorTagSelector_SelectedIndexChanged);
             this.descriptorTagSelector.SelectionChangeCommitted += new System.EventHandler(this.TagSelector_OnSelect);
             // 
             // outputConsole
@@ -143,7 +162,7 @@
             this.entityTypeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entityTypeSelector.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.entityTypeSelector.FormattingEnabled = true;
-            this.entityTypeSelector.Location = new System.Drawing.Point(9, 383);
+            this.entityTypeSelector.Location = new System.Drawing.Point(17, 28);
             this.entityTypeSelector.Name = "entityTypeSelector";
             this.entityTypeSelector.Size = new System.Drawing.Size(121, 21);
             this.entityTypeSelector.TabIndex = 11;
@@ -167,15 +186,6 @@
             this.entityAdderButton.Text = "Add Entity";
             this.entityAdderButton.UseVisualStyleBackColor = true;
             // 
-            // entityTypeSelectorLabel
-            // 
-            this.entityTypeSelectorLabel.AutoSize = true;
-            this.entityTypeSelectorLabel.Location = new System.Drawing.Point(6, 353);
-            this.entityTypeSelectorLabel.Name = "entityTypeSelectorLabel";
-            this.entityTypeSelectorLabel.Size = new System.Drawing.Size(60, 13);
-            this.entityTypeSelectorLabel.TabIndex = 14;
-            this.entityTypeSelectorLabel.Text = "Entity Type";
-            // 
             // entityParameterText
             // 
             this.entityParameterText.AutoSize = true;
@@ -196,6 +206,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(9, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -217,32 +228,149 @@
             this.tabPage1.Controls.Add(this.entityParameterText);
             this.tabPage1.Controls.Add(this.entityParameterEntry);
             this.tabPage1.Controls.Add(this.descriptorTagSelector);
-            this.tabPage1.Controls.Add(this.entityTypeSelectorLabel);
             this.tabPage1.Controls.Add(this.descriptorTextLabel);
-            this.tabPage1.Controls.Add(this.entityTypeSelector);
             this.tabPage1.Controls.Add(this.descriptorText);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(640, 431);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Editor";
+            this.tabPage1.Text = "Overview";
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage2.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.entityTypeSelector);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(640, 431);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Properties";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Text = " Entities";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage3.Controls.Add(this.checkedListBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(640, 431);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Properties";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip5
+            // 
+            this.contextMenuStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1});
+            this.contextMenuStrip5.Name = "contextMenuStrip5";
+            this.contextMenuStrip5.Size = new System.Drawing.Size(161, 29);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            // 
+            // contextMenuStrip6
+            // 
+            this.contextMenuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox2});
+            this.contextMenuStrip6.Name = "contextMenuStrip6";
+            this.contextMenuStrip6.Size = new System.Drawing.Size(161, 29);
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox2.Click += new System.EventHandler(this.toolStripTextBox2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Entity:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "pop",
+            "dsoai",
+            "aworj",
+            "afowj",
+            "vao"});
+            this.checkedListBox1.Location = new System.Drawing.Point(0, 0);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(640, 424);
+            this.checkedListBox1.TabIndex = 0;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Property";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(209, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Value";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(17, 82);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 343);
+            this.flowLayoutPanel1.TabIndex = 20;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // EncounterEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(669, 481);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -253,6 +381,13 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.contextMenuStrip5.ResumeLayout(false);
+            this.contextMenuStrip5.PerformLayout();
+            this.contextMenuStrip6.ResumeLayout(false);
+            this.contextMenuStrip6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,11 +406,24 @@
         private System.Windows.Forms.ComboBox entityTypeSelector;
         private System.Windows.Forms.TextBox entityParameterEntry;
         private System.Windows.Forms.Button entityAdderButton;
-        private System.Windows.Forms.Label entityTypeSelectorLabel;
         private System.Windows.Forms.Label entityParameterText;
         private System.Windows.Forms.TreeView storedValuesDisplayBox;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip5;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip6;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
